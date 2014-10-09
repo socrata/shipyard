@@ -5,7 +5,7 @@ set -e
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 NS=socrata
 BUILD_DIRS=$@
-BUILD_DIRS=${BUILD_DIRS:-`cd $DIR && ls -d * | egrep -v '^bin$'`}
+BUILD_DIRS=${BUILD_DIRS:-`cd $DIR && ls -d */Dockerfile | cut -f1 -d'/'`}
 
 function build_image() {
   local subdir=$1
