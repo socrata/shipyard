@@ -10,7 +10,7 @@ set -eo pipefail
 COMMAND=${1:-run}
 shift || true
 
-if [ -e /root/$COMMAND ]; then
+if [ -e /etc/start.d/$COMMAND ]; then
   /etc/start.d/$COMMAND $@
 else
   command -v $COMMAND >/dev/null 2>&1 || { echo >&2 "Aborting. Not a valid command: $COMMAND"; exit 1; }
