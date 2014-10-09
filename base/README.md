@@ -1,11 +1,11 @@
 socrata/base
 ============
 
-Base ubuntu image with an extensible start script that establishes a pattern of /etc/start.d/ scripts
+Base ubuntu image with an extensible start script that establishes a pattern of `/etc/start.d/` scripts
 
 ### Usage
 
-Any container built on top of the socrata/base image will default to running the whatever script is dropped in `/etc/start.d/run`. Alternatively, you can invoke any script dropped in /etc/start.d/ or any executable in the container via the CMD argument:
+Any container built on top of the socrata/base image will default to running the whatever script is dropped in `/etc/start.d/run`. Alternatively, you can invoke any script dropped in `/etc/start.d/` or any executable in the container via the CMD argument:
 
     $ docker pull socrata/base
     $ docker run --rm -t -i socrata/base [CMD]
@@ -19,9 +19,9 @@ Any container built on top of the socrata/base image will default to running the
 
 Assuming we build an image called awesome_sauce from a Dockerfile like this:
 
-   FROM socrata/base
-   ADD run /etc/start.d/
-   ADD migrate /etc/start.d/
+    FROM socrata/base
+    ADD run /etc/start.d/
+    ADD migrate /etc/start.d/
 
 where the `run` script starts a service and `migrate` is a one-off script for performing migrations.
 
