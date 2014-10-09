@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -e
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
+NS=socrata
+BUILD_DIRS=$@
+BUILD_DIRS=${BUILD_DIRS:-`cd $DIR && ls -d * | egrep -v '^bin$'`}
+
+function build_image() {
+  local subdir=$1
+  local tag=${subdir}
+
+  docker build $BUILD_OPTS -t ${NS}/$tag $DIR/$subdir
+}
+
+for subdir in $BUILD_DIRS; do
+  echo "Building ${subdir}..."
+  build_image $subdir
+done
