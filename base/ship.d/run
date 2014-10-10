@@ -2,5 +2,5 @@
 
 set -eo pipefail
 
-echo "Not implemented. Add /etc/start.d/run to the docker image to serve as the default command."
+echo "Not implemented. Add /etc/ship.d/run to the docker image to serve as the default command."
 exit 1
