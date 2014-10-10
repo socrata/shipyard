@@ -15,6 +15,6 @@ Build a single image from this project:
 
 ### Images
 
-- [socrata/base](base): Base ubuntu image with an extensible start script that establishes a pattern of /etc/start.d/ scripts
 - [socrata/data](data): Basic data container
-
+- [socrata/base](base): Base ubuntu image with an extensible `/bin/ship` script that establishes a pattern of `/etc/ship.d/` scripts
+- [socrata/java](java): Socrata/base image with Oracle Java installed
