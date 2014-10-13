@@ -1,4 +1,4 @@
-#!/usr/bin//bin python
+#!/usr/bin/env python
 import os
 import sys
 from jinja2 import Environment, FileSystemLoader
@@ -6,9 +6,9 @@ from jinja2 import Environment, FileSystemLoader
 
 def main(argv):
 
-    template_path = os.abspath(argv[0])
+    template_path = os.path.abspath(argv[0])
     if len(argv) > 1:
-        output_path = os.abspath(argv[1])
+        output_path = os.path.abspath(argv[1])
     else:
         output_path = template_path.strip('.j2')
 
