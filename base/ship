@@ -10,6 +10,9 @@ set -eo pipefail
 COMMAND=${1:-run}
 shift || true
 
+# Add the default gateway to /etc/hosts as dockerhost
+(grep dockerhost /etc/hosts > /dev/null) || (netstat -nr | grep '^0\.0\.0\.0' | awk '{print $2" dockerhost"}' >> /etc/hosts)
+
 if [ -e /etc/ship.d/$COMMAND ]; then
   /etc/ship.d/$COMMAND $@
 else
