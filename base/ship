@@ -1,17 +1,27 @@
 #!/bin/bash
 #
 # This script servces as a flexible docker ENTRYPOINT
-# Add a script to /etc/ship.d/run to be the default execution
-# Other scripts in /etc/ship.d/ can be specified as the docker command
-# Any executable (absolute or on PATH) can also be specified as the command
+# - Add a script to /etc/ship.d/run to be the default execution
+# - Other scripts in /etc/ship.d/ can be specified as the docker command
+# - Any executable (absolute or on PATH) can also be specified as the command
+# - Adds a standard way of getting the docker host IP
 
-set -eo pipefail
+set -e
 
 COMMAND=${1:-run}
 shift || true
 
-# Add the default gateway to /etc/hosts as dockerhost
-(grep dockerhost /etc/hosts > /dev/null) || (netstat -nr | grep '^0\.0\.0\.0' | awk '{print $2" dockerhost"}' >> /etc/hosts)
+if [ -z "$DOCKERHOST" ] && [ -n "$DOCKERHOST_API" ]; then
+  # Get the dockerhost from an API
+  DOCKERHOST=`curl -s --fail $DOCKERHOST_API 2>/dev/null`
+fi
+
+if [ -z "$DOCKERHOST" ]; then
+  # Use the default gateway as the dockerhost
+  DOCKERHOST=`netstat -nr | grep '^0\.0\.0\.0' | awk '{print $2}'`
+fi
+
+(grep dockerhost /etc/hosts > /dev/null) || (echo "$DOCKERHOST dockerhost" >> /etc/hosts)
 
 if [ -e /etc/ship.d/$COMMAND ]; then
   /etc/ship.d/$COMMAND $@
