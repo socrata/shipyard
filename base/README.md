@@ -1,7 +1,14 @@
 socrata/base
 ============
 
-Base ubuntu image with an extensible `/bin/ship` script that establishes a pattern of `/etc/ship.d/` scripts
+Base ubuntu image that establises a base set of patterns and tools for building other containers
+
+### Features
+
+- ship.d pattern: `ship` entrypoint to execute ship.d scripts
+- [envconsul](https://github.com/hashicorp/envconsul) built-in: for creating environment variables based on consul k/v pairs
+- dockerhost route: /etc/host route to the docker host (configurable, but defaults to the default route IP)
+- env_parse: a tool for generating config files from jinja templates and environment variable
 
 ### Usage
 
