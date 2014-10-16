@@ -15,3 +15,5 @@ fi
 
 (grep dockerhost /etc/hosts > /dev/null) || \
 (echo "$DOCKERHOST dockerhost" >> /etc/hosts)
+
+export DOCKERHOST
