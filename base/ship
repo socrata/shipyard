@@ -11,22 +11,14 @@ set -e
 COMMAND=${1:-run}
 shift || true
 
-if [ -z "$DOCKERHOST" ] && [ -n "$DOCKERHOST_API" ]; then
-  # Get the dockerhost from an API
-  DOCKERHOST=`curl -s --fail $DOCKERHOST_API 2>/dev/null`
-fi
-
-if [ -z "$DOCKERHOST" ]; then
-  # Use the default gateway as the dockerhost
-  DOCKERHOST=`netstat -nr | grep '^0\.0\.0\.0' | awk '{print $2}'`
-fi
-
-(grep dockerhost /etc/hosts > /dev/null) || (echo "$DOCKERHOST dockerhost" >> /etc/hosts)
+/bin/set_dockerhost # in /etc/hosts
 
 if [ -e /etc/ship.d/$COMMAND ]; then
   /etc/ship.d/$COMMAND $@
 else
-  command -v $COMMAND >/dev/null 2>&1 || { echo >&2 "Aborting. Not a valid command: $COMMAND"; exit 1; }
+  command -v $COMMAND >/dev/null 2>&1 || {
+      echo >&2 "Aborting. Not a valid command: $COMMAND"; exit 1;
+  }
   $COMMAND $@
 fi
 

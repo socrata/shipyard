@@ -7,6 +7,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install python-jinja2 curl
 RUN curl -Lo /bin/envconsul https://github.com/hashicorp/envconsul/releases/download/v0.2.0/envconsul_linux_amd64 && \
     chmod +x /bin/envconsul
 
+ADD set_dockerhost /bin/set_dockerhost
 ADD ship /bin/ship
 ADD ship.d /etc/ship.d
 
