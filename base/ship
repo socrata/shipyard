@@ -11,7 +11,7 @@ set -e
 COMMAND=${1:-run}
 shift || true
 
-/bin/set_dockerhost # in /etc/hosts
+/bin/set_ark_host # in /etc/hosts
 
 if [ -e /etc/ship.d/$COMMAND ]; then
   /etc/ship.d/$COMMAND $@
