@@ -6,9 +6,18 @@ Base ubuntu image that establises a base set of patterns and tools for building 
 ### Features
 
 - ship.d pattern: `ship` entrypoint to execute ship.d scripts
+
+See the usage section below
+
 - [envconsul](https://github.com/hashicorp/envconsul) built-in: for creating environment variables based on consul k/v pairs
-- ark-host route: /etc/host route to the docker host (configurable, but defaults to the default route IP)
-- env_parse: a tool for generating config files from jinja templates and environment variable
+- ark-host/ark-hostname route: /etc/host route to the docker host (configurable, but defaults to the default route IP)
+
+Inside a docker container, the host’s ip and name are not available.  By invoking these scripts, we can make the container aware of its host as necessary.  They create the environment variables ARK_HOST and ARK_HOSTNAME.
+
+- env_parse:
+A tool for generating config files from [jinja](http://jinja.pocoo.org/) templates and environment variables.
+
+This script lets a service owner build configuration files that are created at run time from environment variables and a template file.  The template language is jinja and any template variables must be available as e  nvironment variables.  env_parse takes one argument, the template, and an optional argument for the output file.  If omitted, the output file is identical to the template file name with the trailing .j2 removed.
 
 ### Usage
 
@@ -18,7 +27,7 @@ Any container built on top of the socrata/base image will default to running the
     $ docker run --rm -t -i socrata/base [CMD]
 
     # Examples:
-    $ docker run --rm -t -i socrata/base             # runs /etc/ship.d/run in the container 
+    $ docker run --rm -t -i socrata/base             # runs /etc/ship.d/run in the container
     $ docker run --rm -t -i socrata/base bash        # launch a bash shell (on PATH)
 
     # From inside the container, launch the /etc/shipd.d/run
@@ -36,4 +45,3 @@ where the `run` script starts a service and `migrate` is a one-off script for pe
 
     $ docker run --rm -t -i awesome_sauce migrate   # runs the migrations from the container
     $ docker run --rm -t -i awesome_sauce           # starts the awesome_sauce service (via the `run` script)
-
