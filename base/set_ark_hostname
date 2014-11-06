@@ -11,8 +11,8 @@ case $ARK_HOSTNAME in
     ;;
 esac
 
-if [ -z "ARK_HOSTNAME" ]; then
+if [ -z "$ARK_HOSTNAME" ]; then
   # Use the default gateway to base the hostname on
-  ARK_HOSTNAME=`netstat -nr | grep '^0\.0\.0\.0' | awk '{print $2}'` | sed 's/\./-/g'.ark
+  ARK_HOSTNAME=ark-host
 fi
 export ARK_HOSTNAME
