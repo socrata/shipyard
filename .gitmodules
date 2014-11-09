@@ -1,0 +1,3 @@
+[submodule "simianarmy-docker"]
+	path = simianarmy
+	url = git@github.com:socrata/simianarmy-docker
