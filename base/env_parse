@@ -15,7 +15,8 @@ def main(argv):
 
     environment_vars = os.environ
 
-    jinja_env = Environment(loader=FileSystemLoader('/'),
+    jinja_env = Environment(loader=FileSystemLoader('/',
+                                                    autoescape=True),
                             undefined=StrictUndefined)
     template = jinja_env.get_template(template_path)
 
