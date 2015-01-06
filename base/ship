@@ -14,6 +14,10 @@ shift || true
 source /bin/set_ark_host # in /etc/hosts
 source /bin/set_ark_hostname
 
+if [ -d /etc/pre-init.d ]; then
+    run-parts -v --exit-on-error /etc/pre-init.d
+fi
+
 if [ -e /etc/ship.d/$COMMAND ]; then
   /etc/ship.d/$COMMAND $@
 else
