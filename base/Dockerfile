@@ -1,20 +1,21 @@
 FROM ubuntu:trusty
-MAINTAINER Anthony Nowell <anthony.nowell@socrata.com.com>
+MAINTAINER Anthony Nowell <anthony.nowell@socrata.com>
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && apt-get -y dist-upgrade
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install python-jinja2 curl
+# Add a user so containers can run things as non root.  Not perfect since it is shared across containers,
+# but eventually uid namespacing will hopefully fix that.
+RUN groupadd -r socrata && useradd -r -g socrata socrata
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && DEBIAN_FRONTEND=noninteractive apt-get -y install \
+  curl \
+  python-jinja2
 
 RUN curl -Lo /bin/envconsul https://github.com/hashicorp/envconsul/releases/download/v0.2.0/envconsul_linux_amd64 && \
     chmod +x /bin/envconsul
 
 RUN mkdir /etc/pre-init.d
 
-ADD set_ark_host /bin/set_ark_host
-ADD set_ark_hostname /bin/set_ark_hostname
-ADD ship /bin/ship
-ADD ship.d /etc/ship.d
-
-ADD env_parse /bin/env_parse
+COPY env_parse set_ark_host set_ark_hostname ship /bin/
+COPY ship.d /etc/ship.d/
 
 ENTRYPOINT ["/bin/ship"]
 CMD ["run"]
