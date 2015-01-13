@@ -19,11 +19,10 @@ if [ -d /etc/pre-init.d ]; then
 fi
 
 if [ -e /etc/ship.d/$COMMAND ]; then
-  /etc/ship.d/$COMMAND $@
+  exec /etc/ship.d/$COMMAND $@
 else
   command -v $COMMAND >/dev/null 2>&1 || {
       echo >&2 "Aborting. Not a valid command: $COMMAND"; exit 1;
   }
-  $COMMAND $@
+  exec $COMMAND $@
 fi
-
