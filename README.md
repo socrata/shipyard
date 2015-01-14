@@ -9,9 +9,9 @@ Build all images in this project:
 
     $ bin/build
 
-Build a single image from this project:
+Build a single image from this project, with support for specific versions:
 
-    $ bin/build [name]
+    $ bin/build name[/x.x.x]
 
 ### Images
 

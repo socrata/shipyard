@@ -5,13 +5,32 @@ set -e
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 NS=socrata
 BUILD_DIRS=$@
-BUILD_DIRS=${BUILD_DIRS:-`cd $DIR && ls -d */Dockerfile | cut -f1 -d'/'`}
+# If an image name is provided, validate it can be built
+if [ -n "$BUILD_DIRS" ]; then
+  BUILD_DOCKERFILES=$(find ${BUILD_DIRS} -name Dockerfile)
+  rc=$?; if [[ $rc != 0 ]]; then
+    echo "No Dockerfiles found"
+    exit $rc
+  fi
+  # Find all of the available builds for this image name
+  BUILD_DIRS=$(echo "$BUILD_DOCKERFILES" | sed "s:^\(.*\)/Dockerfile:\1:")
+fi
+
+BUILD_DIRS=${BUILD_DIRS:-`cd $DIR && find . -name Dockerfile | sed "s:^./\(.*\)/Dockerfile:\1:"`}
 
 function build_image() {
   local subdir=$1
-  local tag=${subdir}
+  local tag=$(echo $subdir | sed "s:/.*$::")
+  local versions=$(echo $subdir | sed -e "s:^${tag}::" -e "s:/: \
+  :g")
 
-  docker build $BUILD_OPTS -t ${NS}/$tag $DIR/$subdir
+  if [ -n "$versions" ]; then
+    for version in $versions; do
+      docker build $BUILD_OPTS -t ${NS}/$tag:$version $DIR/$subdir
+    done
+  else
+    docker build $BUILD_OPTS -t ${NS}/$tag $DIR/$subdir
+  fi
 }
 
 for subdir in $BUILD_DIRS; do
