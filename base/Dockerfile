@@ -1,6 +1,9 @@
 FROM ubuntu:trusty
 MAINTAINER Socrata <sysadmin@socrata.com>
 
+# Default to basic no_proxy list for things that respect it such as set_ark_*
+ENV no_proxy localhost,127.0.0.1,169.254.169.254,jenkins
+
 # Add a user so containers can run things as non root.  Not perfect since it is shared across containers,
 # but eventually uid namespacing will hopefully fix that.
 RUN groupadd -r socrata && useradd -r -g socrata socrata
