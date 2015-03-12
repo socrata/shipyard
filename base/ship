@@ -8,6 +8,9 @@
 
 set -e -x -v
 
+# Try to give mesos time to fetch the logs before the container exits on error
+trap 'echo "Unexpected exit from ship, pausing to allow log collection" && sleep 20' EXIT
+
 COMMAND=${1:-run}
 shift || true
 
