@@ -4,18 +4,18 @@
 # of the gateway or host.
 case $ARK_HOST in
   aws-private)
-    ARK_HOST=`curl -s --fail http://169.254.169.254/latest/meta-data/local-ipv4 2>/dev/null`
+    ARK_HOST=`no_proxy=169.254.169.254 curl -s --fail http://169.254.169.254/latest/meta-data/local-ipv4 2>/dev/null`
     ;;
   aws-public)
-    ARK_HOST=`curl -s --fail http://169.254.169.254/latest/meta-data/public-ipv4 2>/dev/null`
+    ARK_HOST=`no_proxy=169.254.169.254 curl -s --fail http://169.254.169.254/latest/meta-data/public-ipv4 2>/dev/null`
     ;;
 esac
 
 if [ -z "$ARK_HOST" ]; then
   # Use the default gateway as the arkhost
-  ARK_HOST=`netstat -nr | grep '^0\.0\.0\.0' | awk '{print $2}'`
+  ARK_HOST=`ip route | grep 'default via' | head -n1 | awk '{print $3}'`
 fi
 
-(grep ark-host /etc/hosts > /dev/null) || (echo "$ARK_HOST ark-host" >> /etc/hosts)
+grep -q ark-host /etc/hosts || echo "$ARK_HOST ark-host" >> /etc/hosts
 
 export ARK_HOST
