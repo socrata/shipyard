@@ -1,4 +1,4 @@
-socrata/java
+socrata/java8
 ============
 
 socrata/base image with Oracle Java *version 8* installed.
@@ -13,5 +13,5 @@ Most uses of the image will be via `FROM socrata/java` in a Dockerfile, nonethel
     $ docker run --rm -t -i socrata/java8 bash
 
     # Bind mount a directory into the container and build or run something
-    $ docker run --rm -t -i -v `pwd`:/opt/my_app socrata/java javac my_app.java
-    $ docker run --rm -t -i -v `pwd`:/opt/my_app socrata/java java -jar my_app.jar
+    $ docker run --rm -t -i -v `pwd`:/opt/my_app socrata/java8 javac my_app.java
+    $ docker run --rm -t -i -v `pwd`:/opt/my_app socrata/java8 java -jar my_app.jar
