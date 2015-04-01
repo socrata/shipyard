@@ -21,6 +21,9 @@ if [ -d /etc/pre-init.d ]; then
     run-parts -v --exit-on-error /etc/pre-init.d
 fi
 
+# Raise the ulimit - default of 1024 is stone age
+ulimit -n 10000
+
 if [ -e /etc/ship.d/$COMMAND ]; then
   exec /etc/ship.d/$COMMAND $@
 else
