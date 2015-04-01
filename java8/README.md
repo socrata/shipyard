@@ -5,7 +5,7 @@ socrata/base image with Oracle Java *version 8* installed.
 
 ### Usage
 
-Most uses of the image will be via `FROM socrata/java` in a Dockerfile, nonetheless, you can run a java container as follows:
+Most uses of the image will be via `FROM socrata/java8` in a Dockerfile, nonetheless, you can run a java container as follows:
 
     $ docker pull socrata/java8
 
