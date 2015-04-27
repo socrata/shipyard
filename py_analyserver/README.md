@@ -1,7 +1,7 @@
 socrata/py_analyserver
 ======================
 
-socrata/py_nltk image with Flask and flask-restful and requests installed
+socrata/py_nltk image with Flask and flask-restful installed
 
 ### Usage
 

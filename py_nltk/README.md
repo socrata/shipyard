@@ -1,8 +1,8 @@
 socrata/py_nltk
-===================
+===============
 
 socrata/py_analysis image with nltk installed, along with nltk's stopwords, punkt, wordnet and maxent_treebank_pos_tagger.
-The nltk data is stored at /home/socrata.
+The nltk data is stored at $HOME, which is set to /home/socrata.
 
 ### Usage
 
