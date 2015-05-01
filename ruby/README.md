@@ -20,3 +20,4 @@ Most uses of the image will be via `FROM socrata/ruby:<version>` in a Dockerfile
 
 - `socrata/ruby` _alias for `socrata/ruby:2.1`_
 - `socrata/ruby:2.1`
+- `socrata/ruby:2.2`
