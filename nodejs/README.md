@@ -1,7 +1,7 @@
 socrata/nodejs
 
-socrata/base image with nodejs(0.10.25) and npm installed natively and the latest
-of io.js (2.0.0) and node (0.12.2) installed in userspace with n, a node package 
+socrata/base image with nodejs and npm installed natively and the latest
+of io.js and node installed in userspace with n, a node package
 manager.
 
 ### Usage
