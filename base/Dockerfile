@@ -12,7 +12,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
   DEBIAN_FRONTEND=noninteractive apt-get -y install \
     curl \
     python-jinja2 \
-    ruby2.0 && \
+    ruby2.0 \ 
+    zip && \
   rm -rf /var/lib/apt/lists/*
 
 RUN curl -Lo /bin/envconsul https://github.com/hashicorp/envconsul/releases/download/v0.2.0/envconsul_linux_amd64 && \
