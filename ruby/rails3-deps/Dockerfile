@@ -1,4 +1,5 @@
 FROM socrata/ruby:1.9
+MAINTAINER Socrata <sysadmin@socrata.com>
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -q \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y \
