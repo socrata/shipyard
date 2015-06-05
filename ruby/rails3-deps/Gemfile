@@ -17,15 +17,16 @@ gem 'multipart-post', '>= 1.0.1', :require => 'net/http/post/multipart'
 gem 'omniauth', '~> 1.2'
 gem 'omniauth-auth0', '~> 1.1'
 gem 'rack', '~>1.4.5'
-gem 'rails', '~>3.2.12', :require => nil
+gem 'rails', '~>3.2.21', :require => nil
 gem 'recaptcha', :require => 'recaptcha/rails'
 gem 'redcarpet'
 gem 'rinku', :require => 'rails_rinku'
-gem 'sass', '~>3.2'
-gem 'stomp', '1.1.6'
 gem 'sanitize'
+gem 'sass', '~>3.2'
+gem 'semver2'
 gem 'snappy'
 gem 'statsd-ruby', :require => 'statsd', :git => 'https://github.com/socrata-platform/statsd-ruby-fork.git'
+gem 'stomp', '1.1.6'
 gem 'unicorn'
 gem 'xray', :require => 'xray/thread_dump_signal_handler'
 gem 'zip'
@@ -36,12 +37,13 @@ group :test do
   gem 'factory_girl'
   gem 'guard'
   gem 'guard-minitest'
-  gem 'minitest'
+  gem 'minitest', '~> 4.0'
   gem 'minitest-reporters', '>= 0.5.0'
   gem 'mocha', :require => false
   gem 'rb-fsevent'
   gem 'shoulda-context'
   gem 'timecop'
+  gem 'webmock'
 end
 
 group :development, :test do
