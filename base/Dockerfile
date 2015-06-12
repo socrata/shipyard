@@ -21,7 +21,7 @@ RUN curl -Lo /bin/envconsul https://github.com/hashicorp/envconsul/releases/down
 
 RUN mkdir /etc/pre-init.d
 
-COPY env_parse set_ark_host set_ark_hostname ship /bin/
+COPY env_parse set_ark_host set_ark_hostname set_metrics_dir ship /bin/
 COPY ship.d /etc/ship.d/
 
 RUN gem2.0 install aws-sdk-resources --pre
@@ -31,8 +31,5 @@ COPY clortho-get /etc/pre-init.d/clortho-get
 
 #Create Data Directory
 ENV METRICS_ROOT_DIR /data/metrics
-ENV METRICS_DIR $METRICS_ROOT_DIR/$HOSTNAME
-RUN mkdir -p $METRICS_DIR
-
 ENTRYPOINT ["/bin/ship"]
 CMD ["run"]
