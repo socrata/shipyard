@@ -29,5 +29,10 @@ RUN gem2.0 install aws-sdk-resources --pre
 # Credential management bits
 COPY clortho-get /etc/pre-init.d/clortho-get
 
+#Create Data Directory
+ENV METRICS_ROOT_DIR /data/metrics
+ENV METRICS_DIR $METRICS_ROOT_DIR/$HOSTNAME
+RUN mkdir -p $METRICS_DIR
+
 ENTRYPOINT ["/bin/ship"]
 CMD ["run"]
