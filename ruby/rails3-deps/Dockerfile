@@ -1,7 +1,14 @@
 FROM socrata/ruby:1.9
 MAINTAINER Socrata <sysadmin@socrata.com>
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get update -q \
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
+  && DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confnew" --force-yes -fuy install software-properties-common \
+  && DEBIAN_FRONTEND=noninteractive add-apt-repository -y ppa:webupd8team/java \
+  && apt-get -y update \
+  && echo debconf shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections \
+  && echo debconf shared/accepted-oracle-license-v1-1 seen true | /usr/bin/debconf-set-selections \
+  && DEBIAN_FRONTEND=noninteractive apt-get -y install oracle-java8-installer \
+  && rm -rf /var/cache/oracle-jdk8-installer \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     automake \
     g++ \
@@ -26,4 +33,4 @@ RUN gem install multi_xml -- --use-system-libraries=true --with-xml2-include=/us
   && gem install nokogumbo -- --use-system-libraries=true --with-xml2-include=/usr/include/libxml2 \
   && gem install snappy \
   && cd /tmp/bundle \
-  && bundle install
+  && bundle install --path /opt/gems
