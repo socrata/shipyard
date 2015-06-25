@@ -1,5 +1,5 @@
-socrata/python
-===============
+socrata/go
+==========
 
 socrata/base image with go 1.4.2, gpm
 
