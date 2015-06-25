@@ -17,6 +17,3 @@ RUN \
 
 # Set environment variables.
 ENV PATH $GOROOT/bin:$GOPATH/bin:$PATH
-
-# Define working directory.
-WORKDIR $GOPATH
