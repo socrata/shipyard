@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import copy
 import os
 import sys
 from jinja2 import Environment, FileSystemLoader, StrictUndefined
@@ -13,11 +14,18 @@ def main(argv):
     else:
         output_path = template_path.strip('.j2')
 
-    environment_vars = os.environ
+    environment_vars = os.environ.copy()
 
     jinja_env = Environment(loader=FileSystemLoader('/'),
                             undefined=StrictUndefined)
     template = jinja_env.get_template(template_path)
+
+    for var_name in environment_vars.keys():
+      if '_LIST' in var_name:
+        if len(environment_vars[var_name]) == 0:
+          environment_vars = []
+        else:
+          environment_vars[var_name] = environment_vars[var_name].split(',')
 
     try:
         rendered_template = template.render(**environment_vars)
