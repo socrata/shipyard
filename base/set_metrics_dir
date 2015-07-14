@@ -1,5 +1,5 @@
 export METRICS_DIR="$METRICS_ROOT_DIR/$HOSTNAME"
 
 mkdir -p $METRICS_DIR
-chown -R socrata:socrata $METRICS_DIR
+chown -R socrata:metrics $METRICS_DIR
 chmod -R a+rwx $METRICS_DIR
