@@ -7,12 +7,13 @@ ENV no_proxy localhost,127.0.0.1,169.254.169.254,jenkins
 # Add a user so containers can run things as non root.  Not perfect since it is shared across containers,
 # but eventually uid namespacing will hopefully fix that.
 RUN groupadd -r socrata && useradd -r -g socrata socrata
+RUN groupadd -g 31415 metrics && usermod -a -G metrics socrata
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
   DEBIAN_FRONTEND=noninteractive apt-get -y install \
     curl \
     python-jinja2 \
-    ruby2.0 \ 
+    ruby2.0 \
     zip && \
   rm -rf /var/lib/apt/lists/*
 
