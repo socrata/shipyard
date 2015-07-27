@@ -20,3 +20,4 @@ Build a single image from this project, with support for specific versions:
 - [socrata/java](java): Socrata/base image with Oracle Java installed
 - [socrata/ruby](ruby): Alias for [socrata/ruby:2.1](ruby/2.1)
 - [socrata/ruby:2.1](ruby/2.1): socrata/base image with Ruby 2.1.5
+- [socrata/rails3-deps:1.9](ruby/1.9): socrata/ruby:1.9 image with Rails 3 deps
