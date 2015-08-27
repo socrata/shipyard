@@ -30,7 +30,7 @@ def main(argv):
     try:
         rendered_template = template.render(**environment_vars)
     except UndefinedError as err:
-        sys.exit ('Error: The environement variable '+str(err.message))
+        sys.exit ('Error: The environment variable '+str(err.message))
 
     with open(output_path, 'w') as output:
         output.write(rendered_template)
