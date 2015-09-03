@@ -34,3 +34,6 @@ COPY clortho-get /etc/pre-init.d/clortho-get
 ENV METRICS_ROOT_DIR /data/metrics
 ENTRYPOINT ["/bin/ship"]
 CMD ["run"]
+
+# LABEL must be last for proper base image discoverability
+LABEL repository.socrata/base=""
