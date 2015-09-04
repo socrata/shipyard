@@ -8,3 +8,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
   DEBIAN_FRONTEND=noninteractive apt-get -y install oracle-java7-installer && \
   rm -rf /var/cache/oracle-jdk7-installer && \
   rm -rf /var/lib/apt/lists/*
+
+# LABEL must be last for proper base image discoverability
+LABEL repository.socrata/java=""

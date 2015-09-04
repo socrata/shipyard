@@ -34,3 +34,6 @@ RUN gem install multi_xml -- --use-system-libraries=true --with-xml2-include=/us
   && gem install snappy \
   && cd /tmp/bundle \
   && bundle install --path /opt/gems
+
+# LABEL must be last for proper base image discoverability
+LABEL repository.socrata/rails3-deps:1.9=""
