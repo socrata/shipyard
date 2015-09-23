@@ -26,4 +26,4 @@ WORKDIR $GOPATH
 COPY go-wrapper /usr/local/bin/
 
 # LABEL must be last for proper discoverability
-LABEL repository.socrata/golang
+LABEL repository.socrata/golang=""
