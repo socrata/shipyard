@@ -24,3 +24,6 @@ RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 WORKDIR $GOPATH
 
 COPY go-wrapper /usr/local/bin/
+
+# LABEL must be last for proper discoverability
+LABEL repository.socrata/golang
