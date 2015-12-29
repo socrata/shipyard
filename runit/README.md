@@ -1,11 +1,21 @@
-socrata/base
+socrata/runit
 ============
 
-Base ubuntu image that establises a base set of patterns and tools for building other containers
+Image based on phusion/baseimage-docker that establises a base set of patterns and tools for building other containers with support for multiple processes via runit.
 
 ### Features
 
-- ship.d pattern: `ship` entrypoint to execute ship.d scripts
+- Ubuntu 14.04 LTS. The base system.
+- A correct init process (my_init) with
+  - proper process reaping
+  - Docker Stop sends SIGTERM to the init process, which stops all processes gracefully on termination.
+- runit	replaces Ubuntu's Upstart. Used for service supervision and management
+- Fixes APT incompatibilities with Docker	See https://github.com/dotcloud/docker/issues/1024.
+- syslog-ng: A syslog daemon is necessary so that many services - including the kernel itself - can correctly log to /var/log/syslog
+- logrotate	Rotates and compresses logs on a regular basis.
+- SSH server: disabled by default
+- cron	The cron daemon must be running for cron jobs to work.
+- setuser	A tool for running a command as another user. Easier to use than su, has a smaller attack vector than sudo, and unlike chpst this tool sets $HOME correctly. Available as /sbin/setuser.
 
 See the usage section below
 
@@ -21,27 +31,26 @@ This script lets a service owner build configuration files that are created at r
 
 ### Usage
 
-Any container built on top of the socrata/base image will default to running the whatever script is dropped in `/etc/ship.d/run`. Alternatively, you can invoke any script dropped in /etc/ship.d/ or any executable in the container via the CMD argument:
+Any container built on top of the socrata/runit image will default to running the whatever services are configured in /etc/service according via runit.
 
-    $ docker pull socrata/base
-    $ docker run --rm -t -i socrata/base [CMD]
-
-    # Examples:
-    $ docker run --rm -t -i socrata/base             # runs /etc/ship.d/run in the container
-    $ docker run --rm -t -i socrata/base bash        # launch a bash shell (on PATH)
-
-    # From inside the container, launch the /etc/shipd.d/run
-    docker-host$ ship [run]
+Anything placed in /etc/my_init.d will be run on startup in lexigraphical order before runit is invoked. A non-zero return code from any of these will halt the container.
 
 ### Example
 
 Assuming we build an image called awesome_sauce from a Dockerfile like this:
 
-    FROM socrata/base
-    ADD run /etc/ship.d/
-    ADD migrate /etc/ship.d/
+    FROM socrata/runit
 
-where the `run` script starts a service and `migrate` is a one-off script for performing migrations.
+    RUN mkdir /etc/service/myservice
+    COPY myservice-run /etc/service/myservice/run
+    COPY myservice-log /etc/service/myservice/log
 
-    $ docker run --rm -t -i awesome_sauce migrate   # runs the migrations from the container
-    $ docker run --rm -t -i awesome_sauce           # starts the awesome_sauce service (via the `run` script)
+Where `run` and `log` are runit service definitions where the `run` script looks like:
+
+    #!/bin/sh
+    exec /sbin/setuser socrata my_binary
+
+and the `log` script looks like:
+
+    #!/bin/sh
+    exec svlogd -tt /var/log/myservice
