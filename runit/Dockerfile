@@ -20,20 +20,16 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
 RUN curl -Lo /bin/envconsul https://github.com/hashicorp/envconsul/releases/download/v0.2.0/envconsul_linux_amd64 && \
     chmod +x /bin/envconsul
 
-RUN mkdir /etc/pre-init.d
-
 RUN gem2.0 install aws-sdk-resources --pre
 
 COPY env_parse set_ark_host set_ark_hostname set_metrics_dir ship /bin/
-COPY ship.d /etc/ship.d/
 
 # Credential management bits
-COPY clortho-get /etc/pre-init.d/clortho-get
+COPY clortho-get /etc/my_init.d/clortho-get
 
 #Create Data Directory
 ENV METRICS_ROOT_DIR /data/metrics
-ENTRYPOINT ["/bin/ship"]
-CMD ["run"]
+CMD ["/sbin/my_init"]
 
 # LABEL must be last for proper base image discoverability
 LABEL repository.socrata/base=""
