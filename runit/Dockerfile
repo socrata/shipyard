@@ -1,4 +1,4 @@
-FROM phusion/baseimage
+FROM phusion/baseimage:0.9.18
 MAINTAINER Socrata <sysadmin@socrata.com>
 
 # Default to basic no_proxy list for things that respect it such as set_ark_*
