@@ -32,4 +32,4 @@ ENV METRICS_ROOT_DIR /data/metrics
 CMD ["/sbin/my_init"]
 
 # LABEL must be last for proper base image discoverability
-LABEL repository.socrata/base=""
+LABEL repository.socrata/runit=""
