@@ -41,9 +41,9 @@ Assuming we build an image called awesome_sauce from a Dockerfile like this:
 
     FROM socrata/runit
 
-    RUN mkdir /etc/service/myservice
-    COPY myservice-run /etc/service/myservice/run
-    COPY myservice-log /etc/service/myservice/log
+    RUN mkdir /etc/sv/myservice
+    COPY myservice-run /etc/sv/myservice/run
+    COPY myservice-log /etc/sv/myservice/log/run
 
 Where `run` and `log` are runit service definitions where the `run` script looks like:
 

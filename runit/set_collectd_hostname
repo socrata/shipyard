@@ -1,0 +1,6 @@
+#!/bin/sh
+
+ARK_HOST=aws-public
+. /bin/set_ark_host
+
+sed -i 's,^\(Hostname \)<HOSTNAME>,\1'$ARK_HOST',' /etc/collectd/collectd.conf

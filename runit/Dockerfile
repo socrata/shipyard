@@ -15,6 +15,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
     python-jinja2 \
     ruby2.0 \
     zip && \
+  DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends collectd-core && \
+  apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 
 RUN curl -Lo /bin/envconsul https://github.com/hashicorp/envconsul/releases/download/v0.2.0/envconsul_linux_amd64 && \
@@ -22,14 +24,20 @@ RUN curl -Lo /bin/envconsul https://github.com/hashicorp/envconsul/releases/down
 
 RUN gem2.0 install aws-sdk-resources --pre
 
-COPY env_parse set_ark_host set_ark_hostname set_metrics_dir ship /bin/
+COPY env_parse set_ark_host set_ark_hostname set_metrics_dir /bin/
 
 # Credential management bits
 COPY clortho-get /etc/my_init.d/clortho-get
 
-#Create Data Directory
+# Create Data Directory
 ENV METRICS_ROOT_DIR /data/metrics
 CMD ["/sbin/my_init"]
+
+# Configure collectd
+RUN mkdir -p /etc/collectd/conf.d && mkdir -p /etc/sv/collectd/log && mkdir /var/log/collectd
+COPY set_collectd_hostname /etc/my_init.d/set_collectd_hostname
+COPY collectd.conf /etc/collectd/collectd.conf
+COPY sv/collectd-run /etc/service/collectd/run
 
 # LABEL must be last for proper base image discoverability
 LABEL repository.socrata/runit=""
