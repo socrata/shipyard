@@ -34,7 +34,7 @@ ENV METRICS_ROOT_DIR /data/metrics
 CMD ["/sbin/my_init"]
 
 # Configure collectd
-RUN mkdir -p /etc/collectd/conf.d && mkdir -p /etc/sv/collectd/log && mkdir /var/log/collectd
+RUN mkdir -p /etc/collectd/conf.d
 COPY set_collectd_hostname /etc/my_init.d/set_collectd_hostname
 COPY collectd.conf /etc/collectd/collectd.conf
 COPY sv/collectd-run /etc/service/collectd/run

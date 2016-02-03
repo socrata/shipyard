@@ -11,5 +11,10 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 
+ENV LD_LIBRARY_PATH /usr/lib/jvm/java-8-oracle/jre/lib/amd64/server:${LD_LIBRARY_PATH}
+ENV JAVA_TOOL_OPTIONS="-Dcom.sun.management.jmxremote.port=11114 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"
+
+COPY collectd-jmx.conf /etc/collectd/conf.d/jmx.conf
+
 # LABEL must be last for proper base image discoverability
 LABEL repository.socrata/runit-java8=""
