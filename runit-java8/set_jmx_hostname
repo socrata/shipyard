@@ -5,4 +5,4 @@ if [ -z ${APP_NAME} ]; then
     APP_NAME=unknown_marathon_app
 fi
 
-sed -i 's,\(Host \)<HOSTNAME>,\1"'$APP_NAME'",' /etc/collectd/collectd.conf
+sed -i 's,\(Host \)<HOSTNAME>,\1"'$APP_NAME'",' /etc/collectd/conf.d/jmx.conf
