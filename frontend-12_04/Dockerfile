@@ -31,7 +31,7 @@ RUN apt-get update && \
     wget https://phantomjs.googlecode.com/files/phantomjs-1.9.1-linux-x86_64.tar.bz2 && \
     tar xjf phantomjs-1.9.1-linux-x86_64.tar.bz2 --strip=1 -C /usr/local/share/phantomjs && \
     rm -f phantomjs-1.9.1-linux-x86_64.tar.bz2 && \
-    ln -fs /usr/local/share/phantomjs/bin/phantomjs /usr/bin/phantomjs
+    ln -fs /usr/local/share/phantomjs/bin/phantomjs /usr/local/bin/phantomjs
 
 # Install JDK7 to enable JDK 7 on Ubuntu 12
 # Required to run Jenkins slave process and connect to Jenkins master (running Java7 as well)
