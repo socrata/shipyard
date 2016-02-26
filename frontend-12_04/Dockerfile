@@ -1,6 +1,6 @@
 # Based off of evarga/jenkins-slave
 # This Dockerfile is used to build an image containing basic stuff to be used as a Jenkins slave build node.
-# It is based off of ubuntu 10.04, because :'(
+# It is based off of ubuntu 12.04, because :'(
 
 FROM ubuntu:12.04
 MAINTAINER Michael Brown <michael.brown@socrata.com>
