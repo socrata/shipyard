@@ -24,13 +24,13 @@ RUN apt-get update && \
             git-core \
             openssh-server
 
-# Install PhantomJS 1.9
+# Install PhantomJS 1.9.8
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y libfontconfig1 bzip2 && \
     mkdir -p /usr/local/share/phantomjs && \
-    wget https://phantomjs.googlecode.com/files/phantomjs-1.9.1-linux-x86_64.tar.bz2 && \
-    tar xjf phantomjs-1.9.1-linux-x86_64.tar.bz2 --strip=1 -C /usr/local/share/phantomjs && \
-    rm -f phantomjs-1.9.1-linux-x86_64.tar.bz2 && \
+    wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.8-linux-x86_64.tar.bz2 && \
+    tar xjf phantomjs-1.9.8-linux-x86_64.tar.bz2 --strip=1 -C /usr/local/share/phantomjs && \
+    rm -f phantomjs-1.9.8-linux-x86_64.tar.bz2 && \
     ln -fs /usr/local/share/phantomjs/bin/phantomjs /usr/local/bin/phantomjs
 
 # Install JDK7 to enable JDK 7 on Ubuntu 12
