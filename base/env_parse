@@ -21,7 +21,7 @@ def main(argv):
     template = jinja_env.get_template(template_path)
 
     for var_name in environment_vars.keys():
-      if '_LIST' in var_name:
+      if var_name.endswith('_LIST'):
         if len(environment_vars[var_name]) == 0:
           environment_vars = []
         else:
