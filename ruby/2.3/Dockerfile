@@ -5,7 +5,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
   DEBIAN_FRONTEND=noninteractive apt-get --force-yes -fuy install software-properties-common && \
   DEBIAN_FRONTEND=noninteractive add-apt-repository -y ppa:brightbox/ruby-ng && \
   DEBIAN_FRONTEND=noninteractive apt-get -y update && \
-  DEBIAN_FRONTEND=noninteractive apt-get install -y ruby2.3-dev && \
+  DEBIAN_FRONTEND=noninteractive apt-get install -y ruby2.3 ruby2.3-dev && \
   DEBIAN_FRONTEND=noninteractive apt-get purge -y --auto-remove software-properties-common && \
   rm -rf /var/lib/apt/lists/*
 
