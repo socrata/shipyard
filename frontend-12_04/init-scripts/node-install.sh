@@ -11,9 +11,9 @@ echo 'export PATH=$HOME/local/bin:$PATH' >> ~/.profile
 source ~/.profile
 
 echo "Checkout node from github and install locally."
-git clone --depth 1 --branch v0.10.38 git://github.com/joyent/node.git
+git clone https://github.com/nodejs/node.git
 cd node
-git checkout v0.10.38
+git checkout tags/v0.12.12
 ./configure --prefix=$HOME/local
 make install
 cd ..
