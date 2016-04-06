@@ -12,7 +12,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
   rm -rf /var/lib/apt/lists/*
 
 ENV LD_LIBRARY_PATH /usr/lib/jvm/java-8-oracle/jre/lib/amd64/server:${LD_LIBRARY_PATH}
-ENV JAVA_TOOL_OPTIONS="-Dcom.sun.management.jmxremote.port=11114 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"
+ENV JAVA_TOOL_OPTIONS="-Dcom.sun.management.jmxremote.port=11114 -Dcom.sun.management.jmxremote.rmi.port=11115 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"
 
 COPY set_jmx_hostname /etc/my_init.d/set_jmx_hostname
 COPY collectd-jmx.conf /etc/collectd/conf.d/jmx.conf
