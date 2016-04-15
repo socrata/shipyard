@@ -33,6 +33,17 @@ RUN apt-get update && \
     rm -f phantomjs-1.9.8-linux-x86_64.tar.bz2 && \
     ln -fs /usr/local/share/phantomjs/bin/phantomjs /usr/local/bin/phantomjs
 
+RUN apt-get install -y python-software-properties && \
+  add-apt-repository ppa:ubuntu-toolchain-r/test && \
+  apt-get update && \
+  apt-get remove -y gcc && \
+  apt-get install -y gcc-4.8 && \
+  update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 50
+
+RUN apt-get remove -y g++ && \
+  apt-get install -y g++-4.8 && \
+  update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 50
+
 # Install JDK7 to enable JDK 7 on Ubuntu 12
 # Required to run Jenkins slave process and connect to Jenkins master (running Java7 as well)
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
@@ -84,8 +95,9 @@ RUN apt-get update && \
 # Add init scripts to the docker container and run them as the jenkins user
 # This sets up rbenv/ruby and node for frontend builds
 ADD init-scripts /etc/init-scripts
-RUN su jenkins /etc/init-scripts/rbenv-install.sh && \
-    su jenkins /etc/init-scripts/node-install.sh
+RUN export CXX=g++-4.8 && \
+  su jenkins /etc/init-scripts/rbenv-install.sh && \
+  su jenkins /etc/init-scripts/node-install.sh
 
 # Standard SSH port
 EXPOSE 22

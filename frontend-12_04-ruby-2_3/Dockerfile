@@ -50,11 +50,23 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 561F9B9CAC
     /usr/bin/passenger-config validate-install ; \
     passenger-install-apache2-module -a
 
+RUN apt-get install -y python-software-properties && \
+  add-apt-repository ppa:ubuntu-toolchain-r/test && \
+  apt-get update && \
+  apt-get remove -y gcc && \
+  apt-get install -y gcc-4.8 && \
+  update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 50
+
+RUN apt-get remove -y g++ && \
+  apt-get install -y g++-4.8 && \
+  update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 50
+
 # Add init scripts to the docker container and run them as the jenkins user
 # This sets up rbenv/ruby and node for frontend builds
 ADD init-scripts /etc/init-scripts
-RUN su jenkins /etc/init-scripts/node-install.sh && \
-    su jenkins /etc/init-scripts/rbenv-install.sh
+RUN export CXX=g++-4.8 && \
+  su jenkins /etc/init-scripts/node-install.sh && \
+  su jenkins /etc/init-scripts/rbenv-install.sh
 
 # Standard SSH port
 EXPOSE 22

@@ -16,7 +16,7 @@ if [ ! -d node ]; then
   git clone https://github.com/nodejs/node.git
 fi
 cd node
-git checkout tags/v0.12.12
+git checkout tags/v4.4.3
 ./configure --prefix=$HOME/local
 make install
 

@@ -13,7 +13,7 @@ source ~/.profile
 echo "Checkout node from github and install locally."
 git clone https://github.com/nodejs/node.git
 cd node
-git checkout tags/v0.12.12
+git checkout tags/v4.4.3
 ./configure --prefix=$HOME/local
 make install
 cd ..
