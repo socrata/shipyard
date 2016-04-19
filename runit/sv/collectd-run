@@ -1,3 +1,4 @@
 #!/bin/sh
 sleep 10 # need collectd to start after other processes
+ulimit -m 67108864 # set resource max: 64m resident memory
 exec /usr/sbin/collectd -C /etc/collectd/collectd.conf -f >/dev/null
