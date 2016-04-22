@@ -1,4 +1,4 @@
 #!/bin/sh
 sleep 10 # need collectd to start after other processes
-# chpst (runs a program with changed process state) memory limit 128mb
-exec chpst -m 134217728 /usr/sbin/collectd -C /etc/collectd/collectd.conf -f >/dev/null
+# chpst (runs a program with changed process state) memory limit 192mb
+exec chpst -m 201326592 /usr/sbin/collectd -C /etc/collectd/collectd.conf -f >/dev/null
