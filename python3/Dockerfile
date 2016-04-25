@@ -9,10 +9,11 @@ RUN apt-get -y install build-essential libssl-dev gfortran gcc g++ python3 pytho
 
 # make some useful symlinks that are expected to exist
 RUN cd /usr/local/bin \
-    	&& ln -s /usr/bin/easy_install-3.4 easy_install \
-	&& ln -s /usr/bin/pydoc3 pydoc \
-	&& ln -s /usr/bin/python3 python \
-	&& ln -s /usr/bin/python-config3 python-config
+  && ln -s /usr/bin/easy_install-3.4 easy_install \
+  && ln -s /usr/bin/pip3 pip \
+  && ln -s /usr/bin/pydoc3 pydoc \
+  && ln -s /usr/bin/python3 python \
+  && ln -s /usr/bin/python-config3 python-config
 
 # LABEL must be last for proper base image discoverability
 LABEL repository.socrata/python3=""
