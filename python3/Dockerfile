@@ -2,6 +2,10 @@ FROM socrata/base
 
 RUN apt-get update
 
+# Add locale profiles and default to en_US.UTF-8
+RUN locale-gen en_US.UTF-8
+ENV LANG en_US.UTF-8
+
 # remove several traces of debian python
 RUN apt-get purge -y python.*
 
