@@ -15,14 +15,30 @@ Build a single image from this project, with support for specific versions:
 
 ### Images
 
-- [socrata/data](data): Basic data container
+- [socrata/data](data): Basic data container that creates a `/data` volume
 - [socrata/base](base): Base ubuntu image that establises a base set of patterns and tools for building other containers
-- [socrata/java](java): Socrata/base image with Oracle Java installed
+- [socrata/frontend-12_04](frontend-12_04): Image for frontend 12.04 based on evarga/jenkins-slave
+- [socrata/frontend-12_04-ruby-2_3](frontend-12_04-ruby-2_3): Image for frontend 12.04 with Ruby 2.3.0 based on evarga/jenkins-slave
+- [socrata/java](java): socrata/base image with Oracle Java installed
+- [socrata/java8](java8): socrata/base image with Oracle Java *version 8* installed.
+- [socrata/nodejs](nodejs): socrata/base image with nodejs and npm installed natively and the latest of io.js and node installed in userspace with n, a node package manager.
+- [socrata/py3_analysis](py3_analysis): socrata/python3 image with numpy, scipy and scikit installed. Similar to the socrata/py_analysis image, but for python3.
+- [socrata/py3_spacy](py3_spacy): socrata/py3_analysis with spacy-en installed
+- [socrata/py_analyserver](py_analyserver): socrata/py_nltk image with Flask and flask-restful installed
+- [socrata/py_analysis](py_analysis): socrata/python image with numpy, scipy and scikit installed
+- [socrata/py_nltk](py_nltk): socrata/py_analysis image with nltk installed, along with nltk's stopwords, punkt, wordnet and maxent_treebank_pos_tagger.
+- [socrata/python](python): socrata/base image with python 2.7 and pip installed
+- [socrata/python3](python3): socrata/base image with python 3.4 and pip installed.
+- [socrata/rails3-deps](rails3-deps): socrata/ruby:1.9 image with build tools, unicorn, dependency libraries, and gems
+- [socrata/rails4-deps](rails4-deps): socrata/ruby2.3 image with build tools, unicorn, dependency libraries, and gems
 - [socrata/ruby](ruby): Alias for [socrata/ruby:2.1](ruby/2.1)
-- [socrata/ruby:2.1](ruby/2.1): socrata/base image with Ruby 2.1.5
-- [socrata/ruby:2.2](ruby/2.2): socrata/base image with Ruby 2.2
-- [socrata/ruby:2.3](ruby/2.3): socrata/base image with Ruby 2.3
-- [socrata/rails3-deps:1.9](ruby/1.9): socrata/ruby:1.9 image with Rails 3 deps
-- [socrata/runit-ruby](runit-ruby/2.3): Alias for [socrata/runit-ruby:2.3](runit-ruby/2.3)
-- [socrata/runit-ruby:2.2](runit-ruby/2.2): socrata/runit image with Ruby 2.2
-- [socrata/runit-ruby:2.3](runit-ruby/2.3): socrata/runit image with Ruby 2.3
+- [socrata/ruby:1.9](ruby/1.9): socrata/base image with Ruby 1.9 installed
+- [socrata/ruby:2.1](ruby/2.1): socrata/base image with Ruby 2.1 installed
+- [socrata/ruby:2.2](ruby/2.2): socrata/base image with Ruby 2.2 installed
+- [socrata/ruby:2.3](ruby/2.3): socrata/base image with Ruby 2.3 installed
+- [socrata/runit](runit): Image based on phusion/baseimage-docker that establises a base set of patterns and tools for building other containers with support for multiple processes via runit.
+- [socrata/runit-java8](runit-java8): Image based on phusion/baseimage-docker that establises a base set of patterns and tools for building other containers with support for multiple processes via runit. This image is packaged with Oracle Java *version 8* installed.
+- [socrata/runit-nodejs](runit-nodejs): Image based on phusion/baseimage-docker that establises a base set of patterns and tools for building other containers with support for multiple processes via runit. This image is packaged with Oracle Java *version 8* installed.
+- [socrata/runit-ruby](runit-ruby): Alias for [socrata/runit-ruby:2.3](runit-ruby/2.3)
+- [socrata/runit-ruby:2.2](runit-ruby/2.2): socrata/runit image with Ruby 2.2 installed
+- [socrata/runit-ruby:2.3](runit-ruby/2.3): socrata/runit image with Ruby 2.3 installed
