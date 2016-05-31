@@ -11,6 +11,15 @@ if ENV['AWS_REGION'].nil?
   puts "DEBUG: AWS_REGION unset. Defaulting to us-west-2"
 end
 
+if File.file?('/etc/aws/credentials')
+  YAML.load_file('/etc/aws/credentials') do |creds|
+    Aws.config[:credentials] = Aws::Credentials.new(
+      creds['aws_access_key_id'],
+      creds['aws_secret_access_key']
+    )
+  end
+end
+
 files = ENV['CLORTHO_PATH']
 bucket = ENV['CLORTHO_BUCKET']
 
