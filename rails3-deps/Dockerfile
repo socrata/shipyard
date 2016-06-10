@@ -22,6 +22,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
     patch \
     unicorn \
     zlib1g-dev \
+    nginx \
   && DEBIAN_FRONTEND=noninteractive apt-get purge -y \
   && rm -rf /var/lib/apt/lists/* \
   && mkdir /tmp/bundle
