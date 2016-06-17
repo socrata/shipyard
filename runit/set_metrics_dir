@@ -1,4 +1,8 @@
-export METRICS_DIR="$METRICS_ROOT_DIR/$HOSTNAME"
+if [ -z "$METRICS_DIR_OVERRIDE" ]; then
+  export METRICS_DIR="$METRICS_ROOT_DIR/$HOSTNAME"
+else
+  export METRICS_DIR="$METRICS_DIR_OVERRIDE"
+fi
 
 mkdir -p $METRICS_DIR
 chown -R socrata:metrics $METRICS_DIR
