@@ -18,6 +18,9 @@ RUN curl https://www.python.org/ftp/python/3.5.2/Python-3.5.2.tgz -o Python-3.5.
   && cd Python-3.5.2 \
   && ./configure && make && make install
 
+# remove installation bits
+RUN rm Python-3.5.2.tgz && rm -r Python-3.5.2
+
 # make some useful symlinks that are expected to exist
 RUN cd /usr/local/bin \
   && ln -s easy_install-3.5 easy_install \
