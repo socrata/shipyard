@@ -61,6 +61,7 @@ RUN mkdir -p /var/run/sshd
 
 # Add gitconfig file to force https, proxies won't allow SSH out
 ADD gitconfig /home/jenkins/.gitconfig
+ADD authorized_keys /home/jenkins/.ssh/authorized_keys
 
 # Add user jenkins to the image and set password.
 RUN useradd jenkins && \
