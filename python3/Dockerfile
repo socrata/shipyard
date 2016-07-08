@@ -10,7 +10,7 @@ ENV LANG en_US.UTF-8
 RUN apt-get purge -y python.*
 
 # install some basic goodies
-RUN apt-get -y install build-essential libssl-dev gfortran gcc g++
+RUN apt-get -y install build-essential libssl-dev gfortran gcc g++ libbz2-dev
 
 # download python source
 RUN curl https://www.python.org/ftp/python/3.5.2/Python-3.5.2.tgz -o Python-3.5.2.tgz \
