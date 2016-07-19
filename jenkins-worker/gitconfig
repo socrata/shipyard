@@ -1,0 +1,7 @@
+# Use https instead of git, because we can't use the git:// protocol within the VPN
+[url "https://"]
+     insteadOf = git://
+
+# Use https instead of ssh for github requests, because we can't ssh to the intertubes
+[url "https://github.com/"]
+     insteadOf = git@github.com:
