@@ -17,8 +17,6 @@ Build a single image from this project, with support for specific versions:
 
 - [socrata/data](data): Basic data container that creates a `/data` volume
 - [socrata/base](base): Base ubuntu image that establises a base set of patterns and tools for building other containers
-- [socrata/frontend-12_04](frontend-12_04): Image for frontend 12.04 based on evarga/jenkins-slave
-- [socrata/frontend-12_04-ruby-2_3](frontend-12_04-ruby-2_3): Image for frontend 12.04 with Ruby 2.3.0 based on evarga/jenkins-slave
 - [socrata/java](java): socrata/base image with Oracle Java installed
 - [socrata/java8](java8): socrata/base image with Oracle Java *version 8* installed.
 - [socrata/nodejs](nodejs): socrata/base image with nodejs and npm installed natively and the latest of io.js and node installed in userspace with n, a node package manager.
