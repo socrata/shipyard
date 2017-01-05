@@ -22,3 +22,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
   DEBIAN_FRONTEND=noninteractive apt-get -y install oracle-java8-installer && \
   rm -rf /var/cache/oracle-jdk8-installer && \
   rm -rf /var/lib/apt/lists/*
+
+# Add collectd config file
+COPY collectd-socket.conf /etc/collectd/conf.d/socket.conf
