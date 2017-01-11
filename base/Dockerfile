@@ -12,7 +12,6 @@ RUN groupadd -g 31415 metrics && usermod -a -G metrics socrata
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
   DEBIAN_FRONTEND=noninteractive apt-get -y install \
     curl \
-    git \
     libpq-dev \
     libsqlite3-dev \
     make \
