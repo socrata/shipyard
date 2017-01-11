@@ -48,6 +48,7 @@ Build a single image from this project, with support for specific versions:
 - [`socrata/ruby:2.1`](ruby/2.1): `socrata/base` image with Ruby 2.1 installed.
 - [`socrata/ruby:2.2`](ruby/2.2): `socrata/base` image with Ruby 2.2 installed.
 - [`socrata/ruby:2.3`](ruby/2.3): `socrata/base` image with Ruby 2.3 installed.
+- [`socrata/ruby:2.3-admin`](ruby/2.3-admin): `socrata/base` image with Ruby 2.3 installed and a few dependencies specifically for admin team.
 - [`socrata/runit-ruby`](runit-ruby): Alias for `socrata/runit-ruby:2.3`.
 - [`socrata/runit-ruby:2.2`](runit-ruby/2.2): `socrata/runit` version of `socrata/ruby:2.2`.
 - [`socrata/runit-ruby:2.3`](runit-ruby/2.3): `socrata/runit` version of `socrata/ruby:2.3`.
