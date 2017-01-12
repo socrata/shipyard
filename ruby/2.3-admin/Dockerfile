@@ -3,7 +3,7 @@ MAINTAINER Socrata <sysadmin@socrata.com>
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
   DEBIAN_FRONTEND=noninteractive apt-get -y install \
-    build-essential
+    build-essential \
     libpq-dev \
     libsqlite3-dev \
     libxml2-dev \
