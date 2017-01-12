@@ -12,9 +12,6 @@ RUN groupadd -g 31415 metrics && usermod -a -G metrics socrata
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
   DEBIAN_FRONTEND=noninteractive apt-get -y install \
     curl \
-    libpq-dev \
-    libsqlite3-dev \
-    make \
     python-jinja2 \
     ruby2.0 \
     zip \
