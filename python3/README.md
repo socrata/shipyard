@@ -1,7 +1,7 @@
 socrata/python
 ===============
 
-socrata/base image with python 3.4 and pip installed.
+socrata/base image with python 3.6 and pip installed.
 
 ### Usage
 

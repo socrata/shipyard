@@ -13,21 +13,21 @@ RUN apt-get purge -y python.*
 RUN apt-get -y install build-essential libssl-dev gfortran gcc g++ libbz2-dev
 
 # download python source
-RUN curl https://www.python.org/ftp/python/3.5.2/Python-3.5.2.tgz -o Python-3.5.2.tgz \
-  && tar -zxf Python-3.5.2.tgz \
-  && cd Python-3.5.2 \
+RUN curl https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz -o Python-3.6.0.tgz \
+  && tar -zxf Python-3.6.0.tgz \
+  && cd Python-3.6.0 \
   && ./configure && make && make install
 
 # remove installation bits
-RUN rm Python-3.5.2.tgz && rm -r Python-3.5.2
+RUN rm Python-3.6.0.tgz && rm -r Python-3.6.0
 
 # make some useful symlinks that are expected to exist
 RUN cd /usr/local/bin \
-  && ln -s easy_install-3.5 easy_install \
-  && ln -s pip3.5 pip \
-  && ln -s pydoc3.5 pydoc \
-  && ln -s python3.5 python \
-  && ln -s python-config3.5 python-config
+  && ln -s easy_install-3.6 easy_install \
+  && ln -s pip3.6 pip \
+  && ln -s pydoc3.6 pydoc \
+  && ln -s python3.6 python \
+  && ln -s python-config3.6 python-config
 
 # LABEL must be last for proper base image discoverability
 LABEL repository.socrata/python3=""
