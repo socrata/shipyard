@@ -1,6 +1,5 @@
   # Based off of evarga/jenkins-slave
 # This Dockerfile is used to build an image containing basic stuff to be used as a Jenkins slave build node.
-# It is based off of ubuntu 12.04, because :'(
 
 FROM ubuntu:14.04
 MAINTAINER Matt Shanker <matthew.shanker@socrata.com>
@@ -25,13 +24,13 @@ RUN apt-get update && \
             openssh-server \
             sudo
 
-# Install PhantomJS 1.9.8
+# Install PhantomJS 2.1.1
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y libfontconfig1 bzip2 && \
     mkdir -p /usr/local/share/phantomjs && \
-    wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.8-linux-x86_64.tar.bz2 && \
-    tar xjf phantomjs-1.9.8-linux-x86_64.tar.bz2 --strip=1 -C /usr/local/share/phantomjs && \
-    rm -f phantomjs-1.9.8-linux-x86_64.tar.bz2 && \
+    wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 && \
+    tar xjf phantomjs-2.1.1-linux-x86_64.tar.bz2 --strip=1 -C /usr/local/share/phantomjs && \
+    rm -f phantomjs-2.1.1-linux-x86_64.tar.bz2 && \
     ln -fs /usr/local/share/phantomjs/bin/phantomjs /usr/local/bin/phantomjs
 
 RUN apt-get install -y python-software-properties && \
