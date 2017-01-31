@@ -44,15 +44,15 @@ RUN apt-get remove -y g++ && \
   apt-get install -y g++-4.8 && \
   update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 50
 
-# Install JDK7 to enable JDK 7 on Ubuntu 12
-# Required to run Jenkins slave process and connect to Jenkins master (running Java7 as well)
+# Install JDK8 to enable JDK 8 on Ubuntu
+# Required to run Jenkins slave process and connect to Jenkins master (running Java8 as well)
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
   DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confnew" --force-yes -fuy install software-properties-common && \
   DEBIAN_FRONTEND=noninteractive add-apt-repository -y ppa:webupd8team/java && apt-get -y update && \
   echo debconf shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && \
   echo debconf shared/accepted-oracle-license-v1-1 seen true | /usr/bin/debconf-set-selections && \
-  DEBIAN_FRONTEND=noninteractive apt-get -y install oracle-java7-installer && \
-  rm -rf /var/cache/oracle-jdk7-installer && \
+  DEBIAN_FRONTEND=noninteractive apt-get -y install oracle-java8-installer && \
+  rm -rf /var/cache/oracle-jdk8-installer && \
   rm -rf /var/lib/apt/lists/*
 
 # Configure SSH server.
