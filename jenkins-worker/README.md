@@ -3,7 +3,7 @@ Docker files for jenkins-slave-12_04 docker image
 
 ## Docker build
 
-To build the image, run `docker build -t jenkins-slave-12_04 .` from this directory.
+To build the image, run `docker build -t jenkins-slave-14_04 .` from this directory.
 
 _NOTE: there is one dependency that has to be resolved manually, the JDK for Java 1.7._ This can be downloaded from the Oracle website, but unfortunately there is not an Ubuntu 12_04 repository that apt can use to download this automatically.
 

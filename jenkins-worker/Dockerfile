@@ -1,6 +1,5 @@
   # Based off of evarga/jenkins-slave
 # This Dockerfile is used to build an image containing basic stuff to be used as a Jenkins slave build node.
-# It is based off of ubuntu 12.04, because :'(
 
 FROM ubuntu:14.04
 MAINTAINER Matt Shanker <matthew.shanker@socrata.com>
@@ -25,13 +24,13 @@ RUN apt-get update && \
             openssh-server \
             sudo
 
-# Install PhantomJS 1.9.8
+# Install PhantomJS 2.1.1
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y libfontconfig1 bzip2 && \
     mkdir -p /usr/local/share/phantomjs && \
-    wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.8-linux-x86_64.tar.bz2 && \
-    tar xjf phantomjs-1.9.8-linux-x86_64.tar.bz2 --strip=1 -C /usr/local/share/phantomjs && \
-    rm -f phantomjs-1.9.8-linux-x86_64.tar.bz2 && \
+    wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 && \
+    tar xjf phantomjs-2.1.1-linux-x86_64.tar.bz2 --strip=1 -C /usr/local/share/phantomjs && \
+    rm -f phantomjs-2.1.1-linux-x86_64.tar.bz2 && \
     ln -fs /usr/local/share/phantomjs/bin/phantomjs /usr/local/bin/phantomjs
 
 RUN apt-get install -y python-software-properties && \
@@ -45,15 +44,15 @@ RUN apt-get remove -y g++ && \
   apt-get install -y g++-4.8 && \
   update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 50
 
-# Install JDK7 to enable JDK 7 on Ubuntu 12
-# Required to run Jenkins slave process and connect to Jenkins master (running Java7 as well)
+# Install JDK8 to enable JDK 8 on Ubuntu
+# Required to run Jenkins slave process and connect to Jenkins master (running Java8 as well)
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
   DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confnew" --force-yes -fuy install software-properties-common && \
   DEBIAN_FRONTEND=noninteractive add-apt-repository -y ppa:webupd8team/java && apt-get -y update && \
   echo debconf shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && \
   echo debconf shared/accepted-oracle-license-v1-1 seen true | /usr/bin/debconf-set-selections && \
-  DEBIAN_FRONTEND=noninteractive apt-get -y install oracle-java7-installer && \
-  rm -rf /var/cache/oracle-jdk7-installer && \
+  DEBIAN_FRONTEND=noninteractive apt-get -y install oracle-java8-installer && \
+  rm -rf /var/cache/oracle-jdk8-installer && \
   rm -rf /var/lib/apt/lists/*
 
 # Configure SSH server.
