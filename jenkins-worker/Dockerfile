@@ -1,7 +1,9 @@
   # Based off of evarga/jenkins-slave
 # This Dockerfile is used to build an image containing basic stuff to be used as a Jenkins slave build node.
+FROM socrata/rails4-deps:2.3
 
-FROM ubuntu:14.04
+# This was the original, trying to make it match the frontend version
+#FROM ubuntu:14.04
 MAINTAINER Matt Shanker <matthew.shanker@socrata.com>
 
 # Add lines in limits.conf to make the ulimit higher, default of 1024 is from the stone age
@@ -64,7 +66,7 @@ ADD gitconfig /home/jenkins/.gitconfig
 ADD authorized_keys /home/jenkins/.ssh/authorized_keys
 
 # Add user jenkins to the image and set password.
-RUN useradd jenkins && \
+RUN useradd -m jenkins && \
     echo "jenkins:jenkins" | chpasswd && \
     mkdir -p /home/jenkins && \
     chown jenkins:jenkins /home/jenkins && \
