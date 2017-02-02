@@ -1,6 +1,6 @@
   # Based off of evarga/jenkins-slave
 # This Dockerfile is used to build an image containing basic stuff to be used as a Jenkins slave build node.
-FROM socrata/rails4-deps:2.3
+FROM ubuntu:trusty
 
 # This was the original, trying to make it match the frontend version
 #FROM ubuntu:14.04
