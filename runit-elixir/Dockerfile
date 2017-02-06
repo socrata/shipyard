@@ -11,7 +11,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
 
 # Install erlang & elixir
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
-    DEBIAN_FRONTEND=noninteractive apt-get -y install esl-erlang elixir
+    DEBIAN_FRONTEND=noninteractive apt-get -y install esl-erlang=1:19.2 elixir=1.3.4-1
 
 # Install Java 8. If we start using this image for things other than one app, we might want to revisit this.
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
