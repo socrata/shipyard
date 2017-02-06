@@ -10,8 +10,11 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
     DEBIAN_FRONTEND=noninteractive dpkg -i erlang-solutions_1.0_all.deb
 
 # Install erlang & elixir
+# NOTE: esl-erlang & elixir are pinned to specific versions
+# Any changes to these versions should be synchronized in the
+# jenkins-workers cookbook and a new AMI should be built.
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
-    DEBIAN_FRONTEND=noninteractive apt-get -y install esl-erlang elixir
+    DEBIAN_FRONTEND=noninteractive apt-get -y install esl-erlang=1:19.2 elixir=1.3.4-1
 
 # Install Java 8. If we start using this image for things other than one app, we might want to revisit this.
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
