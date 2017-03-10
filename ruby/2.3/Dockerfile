@@ -1,4 +1,4 @@
-FROM socrata/base
+FROM socrata/runit
 MAINTAINER Socrata <sysadmin@socrata.com>
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
