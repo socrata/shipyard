@@ -1,0 +1,9 @@
+{
+    "max-concurrent-indexers" : 2,
+    "dbpath" : "data",
+    "repos" : {
+        "socrata-platform/decima" : {
+            "url" : "https://github.com/socrata-platform/decima.git"
+        }
+    }
+}
