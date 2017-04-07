@@ -39,5 +39,9 @@ COPY set_collectd_hostname /etc/my_init.d/set_collectd_hostname
 COPY collectd.conf /etc/collectd/collectd.conf
 COPY sv/collectd-run /etc/service/collectd/run
 
+# Set shutdown env vars to reasonable defaults (5 min)
+ENV KILL_ALL_PROCESSES_TIMEOUT 300
+ENV KILL_PROCESS_TIMEOUT 300
+
 # LABEL must be last for proper base image discoverability
 LABEL repository.socrata/runit=""
