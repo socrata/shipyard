@@ -28,3 +28,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
 
 # Add collectd config file
 COPY collectd-socket.conf /etc/collectd/conf.d/socket.conf
+
+# LABEL must be last for proper base image discoverability
+LABEL repository.socrata/runit-elixir=""
