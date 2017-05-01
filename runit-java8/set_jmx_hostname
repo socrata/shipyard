@@ -1,6 +1,6 @@
 #!/bin/sh
 
-APP_NAME=`echo ${MARATHON_APP_ID}|cut -d'/' -f3`
+APP_NAME=`echo ${MARATHON_APP_ID}|cut -d'/' -f2`
 if [ -z ${APP_NAME} ]; then
     APP_NAME=unknown_marathon_app
 fi
