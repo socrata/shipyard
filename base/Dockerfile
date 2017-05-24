@@ -35,9 +35,9 @@ ENV METRICS_ROOT_DIR /data/metrics
 ENTRYPOINT ["/bin/ship"]
 CMD ["run"]
 
-# LABEL must be last for proper base image discoverability
-LABEL repository.socrata/base=""
-
 # Add locale profiles and default to en_US.UTF-8
 RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
+
+# LABEL must be last for proper base image discoverability
+LABEL repository.socrata/base=""
