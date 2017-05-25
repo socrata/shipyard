@@ -35,5 +35,9 @@ ENV METRICS_ROOT_DIR /data/metrics
 ENTRYPOINT ["/bin/ship"]
 CMD ["run"]
 
+# Ensure that containers and apps default to UTF-8
+RUN locale-gen C.UTF-8
+ENV LANG C.UTF-8
+
 # LABEL must be last for proper base image discoverability
 LABEL repository.socrata/base=""
