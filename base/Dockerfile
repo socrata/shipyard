@@ -35,7 +35,7 @@ ENV METRICS_ROOT_DIR /data/metrics
 ENTRYPOINT ["/bin/ship"]
 CMD ["run"]
 
-# Add locale profiles and default to en_US.UTF-8
+# Ensure that containers and apps default to UTF-8
 RUN locale-gen C.UTF-8
 ENV LANG C.UTF-8
 
