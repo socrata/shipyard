@@ -37,7 +37,7 @@ RUN apt-get remove -y g++ && \
   apt-get install -y g++-4.8 && \
   update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 50
 
-# Install JDK7 on Ubuntu
+# Install JDK8 on Ubuntu
 # Required to run Jenkins slave process and connect to Jenkins master
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
   DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confnew" --force-yes -fuy install software-properties-common && \
@@ -47,6 +47,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
   DEBIAN_FRONTEND=noninteractive apt-get -y install oracle-java8-installer && \
   rm -rf /var/cache/oracle-jdk8-installer && \
   rm -rf /var/lib/apt/lists/*
+
+# Install the UTF-8 locale
+RUN locale-gen en_US.UTF-8
 
 # Configure SSH server.
 RUN sed -i 's|session    required     pam_loginuid.so|session    optional     pam_loginuid.so|g' /etc/pam.d/sshd
