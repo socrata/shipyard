@@ -22,14 +22,14 @@ This script lets a service owner build configuration files that are created at r
 
 ### Usage
 
-Any container built on top of the socrata/base image will default to running the whatever script is dropped in `/etc/ship.d/run`. Alternatively, you can invoke any script dropped in /etc/ship.d/ or any executable in the container via the CMD argument:
+Any container built on top of the socrata/base-xenial image will default to running the whatever script is dropped in `/etc/ship.d/run`. Alternatively, you can invoke any script dropped in /etc/ship.d/ or any executable in the container via the CMD argument:
 
-    $ docker pull socrata/base
-    $ docker run --rm -t -i socrata/base [CMD]
+    $ docker pull socrata/base-xenial
+    $ docker run --rm -t -i socrata/base-xenial [CMD]
 
     # Examples:
-    $ docker run --rm -t -i socrata/base             # runs /etc/ship.d/run in the container
-    $ docker run --rm -t -i socrata/base bash        # launch a bash shell (on PATH)
+    $ docker run --rm -t -i socrata/base-xenial # runs /etc/ship.d/run in the container
+    $ docker run --rm -t -i socrata/base-xenial bash        # launch a bash shell (on PATH)
 
     # From inside the container, launch the /etc/shipd.d/run
     docker-host$ ship [run]
@@ -38,7 +38,7 @@ Any container built on top of the socrata/base image will default to running the
 
 Assuming we build an image called awesome_sauce from a Dockerfile like this:
 
-    FROM socrata/base
+    FROM socrata/base-xenial
     ADD run /etc/ship.d/
     ADD migrate /etc/ship.d/
 
