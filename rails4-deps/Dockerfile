@@ -14,6 +14,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
     g++ \
     gcc \
     git \
+    jq \
     libsnappy1 \
     libsnappy-dev \
     libxml2-dev \
