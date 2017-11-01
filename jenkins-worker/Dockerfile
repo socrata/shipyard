@@ -10,6 +10,14 @@ MAINTAINER Matt Shanker <matthew.shanker@socrata.com>
 RUN echo '*  	hard	    nofile  	525488' >> /etc/security/limits.conf
 RUN echo '*  	soft	    nofile  	525488' >> /etc/security/limits.conf
 
+# Add lines to the locale related files
+RUN echo "LC_ALL=en_US.UTF-8" >> /etc/environment
+RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+RUN echo "LANG=en_US.UTF-8" > /etc/locale.conf
+RUN locale-gen en_US.UTF-8
+ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
+RUN update-locale en_US.UTF-8
+
 # Make sure the package repository is up to date, upgrade out of date packages.
 # Add python-software-properties, which installs the `add-apt-repository` script
 # Enable a new repo for git, the default for Ubuntu 10.04 is way too old

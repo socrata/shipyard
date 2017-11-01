@@ -11,8 +11,8 @@ The later steps are currently specific to the Frontend build. In the future it w
 To apply changes to this Dockerfile to the frontend build worker:
 
 1. Update Dockerfile
-2. `docker build -t registry.docker.aws-us-west-2-infrastructure.socrata.net:5000/internal/jenkins-worker_base:latest`
-3. `docker push registry.docker.aws-us-west-2-infrastructure.socrata.net:5000/internal/jenkins-worker_base:latest`
+2. `docker build -t 649617362025.dkr.ecr.us-west-2.amazonaws.com/internal/jenkins-worker_base:latest`
+3. `docker push 649617362025.dkr.ecr.us-west-2.amazonaws.com/internal/jenkins-worker_base:latest`
 4. SSH into the Jenkins host and pull down the new image: 
-`docker pull registry.docker.aws-us-west-2-infrastructure.socrata.net:5000/internal/jenkins-worker_base:latest`
+`docker pull 649617362025.dkr.ecr.us-west-2.amazonaws.com/internal/jenkins-worker_base:latest`
 5. Manually trigger or wait for scheduled run of the `build-worker_frontend` job
