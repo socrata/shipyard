@@ -1,0 +1,10 @@
+#!/bin/bash
+
+docker_for_mac=$(dig +short docker.for.mac.localhost)
+if [ "${docker_for_mac}" != "" ]; then
+  # docker for mac is weird, so point to "special" docker for mac endpoint
+  echo "local.dev.socrata.net ${docker_for_mac}" >> /etc/hosts
+else
+  # running directly on docker from a unix host, point at bridge IP
+  echo "local.dev.socrata.net 172.17.0.1" >> /etc/hosts
+fi

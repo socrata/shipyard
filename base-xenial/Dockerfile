@@ -13,6 +13,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
   DEBIAN_FRONTEND=noninteractive apt-get -y install \
     locales \
     curl \
+    dnsutils \
     python-jinja2 \
     ruby2.3 \
     zip \
@@ -25,7 +26,7 @@ RUN mkdir /etc/pre-init.d
 
 RUN gem2.3 install aws-sdk-resources --pre
 
-COPY env_parse set_ark_host set_ark_hostname set_metrics_dir ship /bin/
+COPY env_parse set_ark_host set_ark_hostname set_metrics_dir set_local_dev_hostname ship /bin/
 COPY ship.d /etc/ship.d/
 
 # Credential management bits

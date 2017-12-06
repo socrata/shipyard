@@ -12,6 +12,7 @@ RUN groupadd -g 31415 metrics && usermod -a -G metrics socrata
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
   DEBIAN_FRONTEND=noninteractive apt-get -y install \
     curl \
+    dnsutils \
     python-jinja2 \
     ruby2.0 \
     zip && \
@@ -35,7 +36,7 @@ CMD ["/sbin/my_init"]
 
 # Configure collectd
 RUN mkdir -p /etc/collectd/conf.d
-COPY set_collectd_hostname /etc/my_init.d/set_collectd_hostname
+COPY set_collectd_hostname set_local_dev_hostname /etc/my_init.d/
 COPY collectd.conf /etc/collectd/collectd.conf
 COPY sv/collectd-run /etc/service/collectd/run
 
