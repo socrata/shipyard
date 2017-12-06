@@ -17,6 +17,7 @@ shift || true
 source /bin/set_ark_host # in /etc/hosts
 source /bin/set_ark_hostname
 source /bin/set_metrics_dir
+source /bin/set_local_dev_hostname
 
 
 if [ -d /etc/pre-init.d ]; then

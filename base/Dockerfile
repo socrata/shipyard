@@ -12,6 +12,7 @@ RUN groupadd -g 31415 metrics && usermod -a -G metrics socrata
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
   DEBIAN_FRONTEND=noninteractive apt-get -y install \
     curl \
+    dnsutils \
     python-jinja2 \
     ruby2.0 \
     zip \
@@ -24,7 +25,7 @@ RUN mkdir /etc/pre-init.d
 
 RUN gem2.0 install aws-sdk-resources --pre
 
-COPY env_parse set_ark_host set_ark_hostname set_metrics_dir ship /bin/
+COPY env_parse set_ark_host set_ark_hostname set_metrics_dir set_local_dev_hostname ship /bin/
 COPY ship.d /etc/ship.d/
 
 # Credential management bits
@@ -36,8 +37,8 @@ ENTRYPOINT ["/bin/ship"]
 CMD ["run"]
 
 # Ensure that containers and apps default to UTF-8
-RUN locale-gen C.UTF-8
-ENV LANG C.UTF-8
+RUN locale-gen en_US.UTF-8
+ENV LANG en_US.UTF-8
 
 # LABEL must be last for proper base image discoverability
 LABEL repository.socrata/base=""
