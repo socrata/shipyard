@@ -37,8 +37,8 @@ ENTRYPOINT ["/bin/ship"]
 CMD ["run"]
 
 # Ensure that containers and apps default to UTF-8
-RUN locale-gen C.UTF-8
-ENV LANG C.UTF-8
+RUN locale-gen en_US.UTF-8
+ENV LANG en_US.UTF-8
 
 # LABEL must be last for proper base image discoverability
 LABEL repository.socrata/base=""
