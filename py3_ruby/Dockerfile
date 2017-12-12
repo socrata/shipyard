@@ -9,6 +9,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential libssl-dev gfortran gcc g++ libbz2-dev && \
     DEBIAN_FRONTEND=noninteractive apt-get --force-yes -fuy install software-properties-common && \
     DEBIAN_FRONTEND=noninteractive add-apt-repository -y ppa:brightbox/ruby-ng && \
+    DEBIAN_FRONTEND=noninteractive apt-get -y update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y ruby2.4 ruby2.4-dev && \
     DEBIAN_FRONTEND=noninteractive apt-get purge -y --auto-remove software-properties-common && \
     DEBIAN_FRONTEND=noninteractive apt-get purge -y python.* && \
