@@ -4,19 +4,18 @@ FROM socrata/base
 RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y update
-# install some basic goodies
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential libssl-dev gfortran gcc g++ libbz2-dev
-
+# All the apt-get things
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential libssl-dev gfortran gcc g++ libbz2-dev && \
+    DEBIAN_FRONTEND=noninteractive apt-get --force-yes -fuy install software-properties-common && \
+    DEBIAN_FRONTEND=noninteractive add-apt-repository -y ppa:brightbox/ruby-ng && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y ruby2.4 ruby2.4-dev && \
+    DEBIAN_FRONTEND=noninteractive apt-get purge -y --auto-remove software-properties-common && \
+    DEBIAN_FRONTEND=noninteractive apt-get purge -y python.* && \
+    rm -rf /var/lib/apt/lists/*
 ##################################################
 # Ruby installation
 ##################################################
-RUN DEBIAN_FRONTEND=noninteractive apt-get --force-yes -fuy install software-properties-common && \
-  DEBIAN_FRONTEND=noninteractive add-apt-repository -y ppa:brightbox/ruby-ng && \
-  DEBIAN_FRONTEND=noninteractive apt-get install -y ruby2.4 ruby2.4-dev && \
-  DEBIAN_FRONTEND=noninteractive apt-get purge -y --auto-remove software-properties-common && \
-  rm -rf /var/lib/apt/lists/*
-
 # skip installing gem documentation
 RUN echo 'gem: --no-rdoc --no-ri --no-document' >> "/etc/gemrc" && \
   gem install bundler
@@ -24,9 +23,6 @@ RUN echo 'gem: --no-rdoc --no-ri --no-document' >> "/etc/gemrc" && \
 ##################################################
 # Python installation
 ##################################################
-# remove several traces of debian python
-RUN DEBIAN_FRONTEND=noninteractive apt-get purge -y python.*
-
 # download python source
 RUN curl https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz -o Python-3.6.0.tgz \
   && tar -zxf Python-3.6.0.tgz \
