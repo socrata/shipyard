@@ -1,7 +1,5 @@
 FROM socrata/base
 
-RUN apt-get update
-
 # Add locale profiles and default to en_US.UTF-8
 RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
@@ -28,7 +26,7 @@ RUN echo 'gem: --no-rdoc --no-ri --no-document' >> "/etc/gemrc" && \
 RUN apt-get purge -y python.*
 
 # install some basic goodies
-RUN apt-get -y install build-essential libssl-dev gfortran gcc g++ libbz2-dev
+RUN apt-get install -y build-essential libssl-dev gfortran gcc g++ libbz2-dev
 
 # download python source
 RUN curl https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz -o Python-3.6.0.tgz \
