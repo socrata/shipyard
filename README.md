@@ -55,7 +55,6 @@ Build a single image from this project, with support for specific versions:
 - [`socrata/runit-ruby`](runit-ruby): Alias for `socrata/runit-ruby:2.3`.
 - [`socrata/runit-ruby:2.2`](runit-ruby/2.2): `socrata/runit` version of `socrata/ruby:2.2`.
 - [`socrata/runit-ruby:2.3`](runit-ruby/2.3): `socrata/runit` version of `socrata/ruby:2.3`.
-#### The following images are locked to these x.y.z versions
 - [`socrata/runit-ruby:2.3.5`](runit-ruby/2.3.5): `socrata/runit` version of `socrata/ruby:2.3.5`. _(1)_
 - [`socrata/runit-ruby:2.3.6`](runit-ruby/2.3.6): `socrata/runit` version of `socrata/ruby:2.3.6`. _(1)_
 - [`socrata/runit-ruby:2.5.0`](runit-ruby/2.5.0): `socrata/runit` version of `socrata/ruby:2.5.0`. _(1)_
