@@ -10,6 +10,7 @@ RUN groupadd -r socrata && useradd -r -g socrata socrata
 RUN groupadd -g 31415 metrics && usermod -a -G metrics socrata
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
+  DEBIAN_FRONTEND=noninteractive apt-get -y upgrade && \
   DEBIAN_FRONTEND=noninteractive apt-get -y install \
     curl \
     dnsutils \
