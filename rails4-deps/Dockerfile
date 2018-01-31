@@ -1,4 +1,4 @@
-FROM socrata/ruby2.3
+FROM socrata/ruby:2.3.5
 MAINTAINER Socrata <sysadmin@socrata.com>
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
