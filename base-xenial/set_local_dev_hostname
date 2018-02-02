@@ -1,10 +1,18 @@
 #!/bin/bash
 
-docker_for_mac=$(dig +short docker.for.mac.localhost)
+# new internal endpoint for docker for mac
+docker_for_mac=$(dig +short docker.for.mac.host.internal)
+
+# deprecated endpoint (as of 17.12), but still required for older versions of docker
+docker_for_mac_deprecated=$(dig +short docker.for.mac.localhost)
+
 if [ "${docker_for_mac}" != "" ]; then
   # docker for mac is weird, so point to "special" docker for mac endpoint
   echo "${docker_for_mac}    local.dev.socrata.net" >> /etc/hosts
-else
+elif [ "${docker_for_mac_deprecated}" != "" ]; then
+  # docker for mac is weird, so point to "special" docker for mac deprecated endpoint
+  echo "${docker_for_mac_deprecated}    local.dev.socrata.net" >> /etc/hosts
+else  
   # running directly on docker from a unix host, point at bridge IP
   echo "172.17.0.1    local.dev.socrata.net" >> /etc/hosts
 fi
