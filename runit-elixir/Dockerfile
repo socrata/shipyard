@@ -14,7 +14,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
 # Any changes to these versions should be synchronized in the
 # jenkins-workers cookbook and a new AMI should be built.
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
-    DEBIAN_FRONTEND=noninteractive apt-get -y install esl-erlang=1:20.0 elixir=1.5.0-1
+    DEBIAN_FRONTEND=noninteractive apt-get -y install esl-erlang=1:20.0 elixir=1.6.3-1
 
 # Install Java 8. If we start using this image for things other than one app, we might want to revisit this.
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
