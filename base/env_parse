@@ -23,7 +23,7 @@ def main(argv):
     for var_name in environment_vars.keys():
       if '_LIST' in var_name:
         if len(environment_vars[var_name]) == 0:
-          environment_vars = []
+          environment_vars[var_name] = []
         else:
           environment_vars[var_name] = environment_vars[var_name].split(',')
 
