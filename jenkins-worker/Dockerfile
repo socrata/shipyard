@@ -4,7 +4,8 @@ FROM ubuntu:trusty
 
 # This was the original, trying to make it match the frontend version
 #FROM ubuntu:14.04
-MAINTAINER Matt Shanker <matthew.shanker@socrata.com>
+# Original mainainer: Matt Shanker
+MAINTAINER engineering@socrata.com
 
 # Add lines in limits.conf to make the ulimit higher, default of 1024 is from the stone age
 RUN echo '*  	hard	    nofile  	525488' >> /etc/security/limits.conf
