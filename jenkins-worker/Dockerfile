@@ -66,7 +66,8 @@ RUN sed -i 's|session    required     pam_loginuid.so|session    optional     pa
 RUN mkdir -p /var/run/sshd
 
 # Add user jenkins to the image and set password.
-RUN useradd -m jenkins && \
+RUN groupadd --gid 116 jenkins
+RUN useradd --create-home jenkins --uid 109 --gid 116 && \
     echo "jenkins:jenkins" | chpasswd && \
     mkdir -p /home/jenkins && \
     chown -R jenkins:jenkins /home/jenkins && \
