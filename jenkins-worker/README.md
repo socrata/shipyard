@@ -4,7 +4,7 @@ Docker files for jenkins-worker docker images
 ## Organization
 The beginning steps of this Dockerfile are based off of the `evarga/jenkins-slave` image.
 
-The later steps are currently specific to the Platform-UI build. In the future it would be useful to seperate this into a base image for all jenkins slaves and language or team specific docker images that have the necessary dependencies baked in.
+The later steps are currently specific to the [Platform-UI](https://github.com/socrata/platform-ui) build. In the future it would be useful to seperate this into a base image for all jenkins slaves and language or team specific docker images that have the necessary dependencies baked in.
 
 ## Frontend build worker
 
