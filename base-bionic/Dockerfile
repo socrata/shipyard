@@ -1,5 +1,5 @@
 FROM ubuntu:bionic
-MAINTAINER Socrata <sysadmin@socrata.com>
+LABEL maintainer="Socrata 'sysadmin@socrata.com'"
 
 # Default to basic no_proxy list for things that respect it such as set_ark_*
 ENV no_proxy localhost,127.0.0.1,169.254.169.254,jenkins

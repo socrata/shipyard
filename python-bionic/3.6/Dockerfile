@@ -1,4 +1,5 @@
 FROM socrata/base-bionic
+LABEL maintainer="Socrata 'sysadmin@socrata.com'"
 
 ENV DEBIAN_FRONTEND noninteractive
 

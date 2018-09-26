@@ -1,7 +1,10 @@
 FROM socrata/base
+LABEL maintainer="Socrata 'sysadmin@socrata.com'"
 
-RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install python python-dev python-pip
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt-get -y update && \
+    apt-get -y install python python-dev python-pip
 
 # Add locale profiles and default to en_US.UTF-8
 RUN locale-gen en_US.UTF-8
