@@ -1,4 +1,4 @@
-FROM socrata-test:runit-bionic
+FROM socrata:runit-bionic
 LABEL maintainer="Socrata 'sysadmin@socrata.com'"
 
 ENV DEBIAN_FRONTEND noninteractive
