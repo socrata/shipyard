@@ -21,10 +21,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 
-RUN curl -Lo /bin/envconsul https://github.com/hashicorp/envconsul/releases/download/v0.2.0/envconsul_linux_amd64 && \
-    chmod +x /bin/envconsul
-
-RUN gem2.0 install aws-sdk-resources --pre
+# Explicitly require safe_yaml avoid "uninitialized constant Gem::SafeYAML" error due to version nightmares
+RUN ruby2.0 -r yaml -r rubygems/safe_yaml -S gem2.0 install aws-sdk-resources --pre
 
 COPY env_parse set_ark_host set_ark_hostname set_metrics_dir /bin/
 
