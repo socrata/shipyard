@@ -1,7 +1,7 @@
 socrata/java8
 ============
 
-socrata/base image with Oracle Java *version 8* installed.
+socrata/base image with OpenJDK *version 8* installed.
 
 ### Usage
 

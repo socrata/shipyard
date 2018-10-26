@@ -22,8 +22,7 @@ Build a single image from this project, with support for specific versions:
 - [`socrata/runit`](runit): Image based on `phusion/baseimage-docker` that establishes a base set of patterns and tools for building other containers with support for multiple processes via `runit`.
 
 ### Java
-- [`socrata/java`](java): `socrata/base` image with Oracle Java installed
-- [`socrata/java8`](java8): `socrata/base` image with Oracle Java *version 8* installed.
+- [`socrata/java8`](java8): `socrata/base` image with  OpenJDK *version 8* installed.
 - [`socrata/runit-java8`](runit-java8): `socrata/runit` version of the above.
 
 ### JavaScript
