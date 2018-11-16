@@ -21,3 +21,7 @@ Most uses of the image will be via `FROM socrata/runit-ruby:<version>` in a Dock
 - `socrata/runit-ruby` _alias for `socrata/runit-ruby:2.3`_
 - `socrata/runit-ruby:2.2`
 - `socrata/runit-ruby:2.3`
+- `socrata/runit-ruby:2.3.5`
+- `socrata/runit-ruby:2.3.6`
+- `socrata/runit-ruby:2.5.0`
+- `socrata/runit-ruby:2.5.3`
