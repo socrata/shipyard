@@ -1,7 +1,7 @@
 socrata/runit
 ============
 
-Image based on phusion/baseimage-docker that establises a base set of patterns and tools for building other containers with support for multiple processes via runit. This image is packaged with Oracle Java *version 8* installed.
+Image based on phusion/baseimage-docker that establises a base set of patterns and tools for building other containers with support for multiple processes via runit. This image is packaged with OpenJDK *version 8* installed.
 
 ### Features
 

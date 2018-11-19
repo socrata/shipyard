@@ -22,8 +22,7 @@ Build a single image from this project, with support for specific versions:
 - [`socrata/runit`](runit): Image based on `phusion/baseimage-docker` that establishes a base set of patterns and tools for building other containers with support for multiple processes via `runit`.
 
 ### Java
-- [`socrata/java`](java): `socrata/base` image with Oracle Java installed
-- [`socrata/java8`](java8): `socrata/base` image with Oracle Java *version 8* installed.
+- [`socrata/java8`](java8): `socrata/base` image with  OpenJDK *version 8* installed.
 - [`socrata/runit-java8`](runit-java8): `socrata/runit` version of the above.
 
 ### JavaScript
@@ -51,6 +50,7 @@ Build a single image from this project, with support for specific versions:
 - [`socrata/ruby:2.3.5`](ruby/2.3.5): `socrata/base` image with Ruby 2.3.5 installed. _(1)_
 - [`socrata/ruby:2.3.6`](ruby/2.3.6): `socrata/base` image with Ruby 2.3.6 installed. _(1)_
 - [`socrata/ruby:2.5.0`](ruby/2.5.0): `socrata/base` image with Ruby 2.5.0 installed. _(1)_
+- [`socrata/ruby:2.5.3`](ruby/2.5.3): `socrata/base` image with Ruby 2.5.3 installed. _(1)_
 - [`socrata/ruby:2.3-admin`](ruby/2.3-admin): `socrata/base` image with Ruby 2.3 installed and a few dependencies specifically for admin team.
 - [`socrata/runit-ruby`](runit-ruby): Alias for `socrata/runit-ruby:2.3`.
 - [`socrata/runit-ruby:2.2`](runit-ruby/2.2): `socrata/runit` version of `socrata/ruby:2.2`.
@@ -58,6 +58,7 @@ Build a single image from this project, with support for specific versions:
 - [`socrata/runit-ruby:2.3.5`](runit-ruby/2.3.5): `socrata/runit` version of `socrata/ruby:2.3.5`. _(1)_
 - [`socrata/runit-ruby:2.3.6`](runit-ruby/2.3.6): `socrata/runit` version of `socrata/ruby:2.3.6`. _(1)_
 - [`socrata/runit-ruby:2.5.0`](runit-ruby/2.5.0): `socrata/runit` version of `socrata/ruby:2.5.0`. _(1)_
+- [`socrata/runit-ruby:2.5.3`](runit-ruby/2.5.3): `socrata/runit` version of `socrata/ruby:2.5.3`. _(1)_
 - [`socrata/rails4-deps`](rails4-deps): `socrata/ruby2.3` image with build tools, `unicorn`, dependency libraries, and gems.
 
 _(1)_ These images are locked to an x.y.z version of ruby
