@@ -17,6 +17,10 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
 ##################################################
 # Ruby installation
 ##################################################
+
+# update the rubygems system version to latest
+RUN gem update --system
+
 # skip installing gem documentation
 RUN echo 'gem: --no-rdoc --no-ri --no-document' >> "/etc/gemrc" && \
   gem install bundler

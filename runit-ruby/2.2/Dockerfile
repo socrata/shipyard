@@ -11,7 +11,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
 
 # skip installing gem documentation
 RUN echo 'gem: --no-rdoc --no-ri --no-document' >> "/etc/gemrc" && \
-  gem install bundler
+  gem install bundler -v 1.17 --no-document
 
 # LABEL must be last for proper base image discoverability
 LABEL repository.socrata/runit-ruby2.2=""
