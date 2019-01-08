@@ -9,11 +9,11 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
   DEBIAN_FRONTEND=noninteractive apt-get purge -y --auto-remove software-properties-common && \
   rm -rf /var/lib/apt/lists/*
 
-RUN gem update --system
+RUN gem update --system 3.0.2
 
 # skip installing gem documentation
 RUN echo 'gem: --no-rdoc --no-ri --no-document' >> "/etc/gemrc" && \
-  gem install bundler
+  gem install bundler -v 2.0.1
 
 # LABEL must be last for proper base image discoverability
 LABEL repository.socrata/ruby2.3=""
