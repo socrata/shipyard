@@ -9,11 +9,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
   DEBIAN_FRONTEND=noninteractive apt-get purge -y --auto-remove software-properties-common && \
   rm -rf /var/lib/apt/lists/*
 
-# RUN gem update --system 3.0.2
-
 # skip installing gem documentation
 RUN echo 'gem: --no-rdoc --no-ri --no-document' >> "/etc/gemrc" && \
-  gem install bundler -v --no-document -v 1.17.3
+  gem install bundler --no-document -v 1.17.3
 
 # LABEL must be last for proper base image discoverability
 LABEL repository.socrata/runit-ruby2.3=""

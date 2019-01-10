@@ -18,12 +18,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
 # Ruby installation
 ##################################################
 
-# update the rubygems system version to latest
-# RUN gem update --system 3.0.2
-
 # skip installing gem documentation
 RUN echo 'gem: --no-rdoc --no-ri --no-document' >> "/etc/gemrc" && \
-  gem install bundler -v --no-document 1.17.3
+  gem install bundler --no-document -v 1.17.3
 
 ##################################################
 # Python installation
