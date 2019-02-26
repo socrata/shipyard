@@ -60,12 +60,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
 # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=775775
 RUN update-ca-certificates -f
 
-#ENV LD_LIBRARY_PATH /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/server:${LD_LIBRARY_PATH}
-#ENV JAVA_TOOL_OPTIONS="-Dcom.sun.management.jmxremote.port=11114 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"
-
-#COPY set_jmx_hostname /etc/my_init.d/set_jmx_hostname
-#COPY collectd-jmx.conf /etc/collectd/conf.d/jmx.conf
-
 # Install the UTF-8 locale
 RUN locale-gen en_US.UTF-8
 
