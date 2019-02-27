@@ -47,18 +47,10 @@ RUN apt-get remove -y g++ && \
   apt-get install -y g++-4.8 && \
   update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 50
 
-# Install OPENJDK8 on Ubuntu
 # Required to run Jenkins slave process and connect to Jenkins master
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
   DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confnew" --force-yes -fuy install software-properties-common && \
-  DEBIAN_FRONTEND=noninteractive add-apt-repository -y ppa:openjdk-r/ppa && apt-get -y update && \
-  DEBIAN_FRONTEND=noninteractive apt-get -y install openjdk-8-jdk && \
-  rm -rf /var/cache/oracle-jdk8-installer && \
   rm -rf /var/lib/apt/lists/*
-
-# Regenerate certs to work around bug in ca-certificates-java that results in missing Java certs
-# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=775775
-RUN update-ca-certificates -f
 
 # Install the UTF-8 locale
 RUN locale-gen en_US.UTF-8
@@ -85,4 +77,3 @@ RUN echo "jenkins ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers
 EXPOSE 22
 
 CMD ["/usr/sbin/sshd", "-D"]
-
