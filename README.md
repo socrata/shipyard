@@ -43,22 +43,24 @@ Build a single image from this project, with support for specific versions:
 - [`socrata/py3_spacy`](py3_spacy): `socrata/py3_analysis` image with `spacy-en` installed.
 
 ### Ruby
-- [`socrata/ruby`](ruby): Alias for `socrata/ruby:2.1`.
-- [`socrata/ruby:2.1`](ruby/2.1): `socrata/base` image with Ruby 2.1 installed.
-- [`socrata/ruby:2.2`](ruby/2.2): `socrata/base` image with Ruby 2.2 installed.
-- [`socrata/ruby:2.3`](ruby/2.3): `socrata/base` image with Ruby 2.3 installed.
-- [`socrata/ruby:2.3.5`](ruby/2.3.5): `socrata/base` image with Ruby 2.3.5 installed. _(1)_
+- DEPRECATED [`socrata/ruby`](ruby): Alias for `socrata/ruby:2.1`.
+- DEPRECATED [`socrata/ruby:2.1`](ruby/2.1): `socrata/base` image with Ruby 2.1 installed.
+- DEPRECATED [`socrata/ruby:2.2`](ruby/2.2): `socrata/base` image with Ruby 2.2 installed.
+- DEPRECATED [`socrata/ruby:2.3`](ruby/2.3): `socrata/base` image with Ruby 2.3 installed.
+- DEPRECATED [`socrata/ruby:2.3.5`](ruby/2.3.5): `socrata/base` image with Ruby 2.3.5 installed. _(1)_
 - [`socrata/ruby:2.3.6`](ruby/2.3.6): `socrata/base` image with Ruby 2.3.6 installed. _(1)_
 - [`socrata/ruby:2.5.0`](ruby/2.5.0): `socrata/base` image with Ruby 2.5.0 installed. _(1)_
 - [`socrata/ruby:2.5.3`](ruby/2.5.3): `socrata/base` image with Ruby 2.5.3 installed. _(1)_
-- [`socrata/ruby:2.3-admin`](ruby/2.3-admin): `socrata/base` image with Ruby 2.3 installed and a few dependencies specifically for admin team.
-- [`socrata/runit-ruby`](runit-ruby): Alias for `socrata/runit-ruby:2.3`.
-- [`socrata/runit-ruby:2.2`](runit-ruby/2.2): `socrata/runit` version of `socrata/ruby:2.2`.
-- [`socrata/runit-ruby:2.3`](runit-ruby/2.3): `socrata/runit` version of `socrata/ruby:2.3`.
-- [`socrata/runit-ruby:2.3.5`](runit-ruby/2.3.5): `socrata/runit` version of `socrata/ruby:2.3.5`. _(1)_
+- [`socrata/ruby:2.6.1`](ruby/2.6.1): `socrata/base` image with Ruby 2.6.1 installed. _(1)_
+- DEPRECATED [`socrata/ruby:2.3-admin`](ruby/2.3-admin): `socrata/base` image with Ruby 2.3 installed and a few dependencies specifically for admin team.
+- DEPRECATED [`socrata/runit-ruby`](runit-ruby): Alias for `socrata/runit-ruby:2.3`.
+- DEPRECATED [`socrata/runit-ruby:2.2`](runit-ruby/2.2): `socrata/runit` version of `socrata/ruby:2.2`.
+- DEPRECATED [`socrata/runit-ruby:2.3`](runit-ruby/2.3): `socrata/runit` version of `socrata/ruby:2.3`.
+- DEPRECATED [`socrata/runit-ruby:2.3.5`](runit-ruby/2.3.5): `socrata/runit` version of `socrata/ruby:2.3.5`. _(1)_
 - [`socrata/runit-ruby:2.3.6`](runit-ruby/2.3.6): `socrata/runit` version of `socrata/ruby:2.3.6`. _(1)_
 - [`socrata/runit-ruby:2.5.0`](runit-ruby/2.5.0): `socrata/runit` version of `socrata/ruby:2.5.0`. _(1)_
 - [`socrata/runit-ruby:2.5.3`](runit-ruby/2.5.3): `socrata/runit` version of `socrata/ruby:2.5.3`. _(1)_
-- [`socrata/rails4-deps`](rails4-deps): `socrata/ruby2.3` image with build tools, `unicorn`, dependency libraries, and gems.
+- [`socrata/runit-ruby:2.6.1`](runit-ruby/2.6.1): `socrata/runit` version of `socrata/ruby:2.6.1`. _(1)_
+- DEPRECATED [`socrata/rails4-deps`](rails4-deps): `socrata/ruby2.3` image with build tools, `unicorn`, dependency libraries, and gems.
 
 _(1)_ These images are locked to an x.y.z version of ruby
