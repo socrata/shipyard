@@ -18,7 +18,6 @@ Build a single image from this project, with support for specific versions:
 
 ### General
 - [`socrata/base`](base): Base Ubuntu image that establises a base set of patterns and tools for building other containers.
-- [`socrata/data`](data): Basic data container that creates a `/data` volume.
 - [`socrata/runit`](runit): Image based on `phusion/baseimage-docker` that establishes a base set of patterns and tools for building other containers with support for multiple processes via `runit`.
 
 ### Java
