@@ -25,41 +25,20 @@ RUN update-locale en_US.UTF-8
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get -y upgrade && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y python-software-properties software-properties-common && \
-    add-apt-repository ppa:git-core/ppa
-
-# Install software dependencies to enable Jenkins to SSH and Git properly.
-RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive \
+    add-apt-repository ppa:git-core/ppa  && \
+    DEBIAN_FRONTEND=noninteractive  && \
     apt-get install -y \
             git-core \
             jq \
             openssh-server \
             sudo
 
-RUN apt-get install -y python-software-properties && \
-  add-apt-repository ppa:ubuntu-toolchain-r/test && \
+RUN  add-apt-repository ppa:ubuntu-toolchain-r/test && \
   apt-get update && \
   apt-get remove -y gcc && \
   apt-get install -y gcc-4.8 && \
-  update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 50
-
-RUN apt-get remove -y g++ && \
-  apt-get install -y g++-4.8 && \
-  update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 50
-
-# Install JDK8 on Ubuntu
-# Required to run Jenkins slave process and connect to Jenkins master
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
-  DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confnew" --force-yes -fuy install software-properties-common && \
-  DEBIAN_FRONTEND=noninteractive add-apt-repository -y ppa:webupd8team/java && apt-get -y update && \
-  echo debconf shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && \
-  echo debconf shared/accepted-oracle-license-v1-1 seen true | /usr/bin/debconf-set-selections && \
-  DEBIAN_FRONTEND=noninteractive apt-get -y install oracle-java8-installer && \
-  rm -rf /var/cache/oracle-jdk8-installer && \
+  update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 50 && \
   rm -rf /var/lib/apt/lists/*
-
-# Install the UTF-8 locale
-RUN locale-gen en_US.UTF-8
 
 # Configure SSH server.
 RUN sed -i 's|session    required     pam_loginuid.so|session    optional     pam_loginuid.so|g' /etc/pam.d/sshd
@@ -83,4 +62,3 @@ RUN echo "jenkins ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers
 EXPOSE 22
 
 CMD ["/usr/sbin/sshd", "-D"]
-
