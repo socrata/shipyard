@@ -18,8 +18,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
     ruby2.0 \
     zip && \
   DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends collectd-core && \
-  apt-get clean && \
-  rm -rf /var/lib/apt/lists/*
+  DEBIAN_FRONTEND=noninteractive apt-get clean && \
+    rm --recursive --force /var/lib/apt/lists/*
 
 # Explicitly require safe_yaml avoid "uninitialized constant Gem::SafeYAML" error due to version nightmares
 RUN ruby2.0 -r yaml -r rubygems/safe_yaml -S gem2.0 install aws-sdk-resources --pre
