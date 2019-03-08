@@ -18,7 +18,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
     ruby2.0 \
     zip && \
   DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends collectd-core && \
-  DEBIAN_FRONTEND=noninteractive apt-get clean && \
+    apt-get clean && \
     rm --recursive --force /var/lib/apt/lists/*
 
 # Explicitly require safe_yaml avoid "uninitialized constant Gem::SafeYAML" error due to version nightmares
