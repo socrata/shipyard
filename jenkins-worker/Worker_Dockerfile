@@ -21,7 +21,7 @@ RUN update-locale en_US.UTF-8
 
 # Make sure the package repository is up to date, upgrade out of date packages.
 # Add python-software-properties, which installs the `add-apt-repository` script
-# Enable a new repo for git, the default for Ubuntu 10.04 is way too old
+# Enable a new repo for git, the default for Ubuntu 14.04 is way too old
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get -y upgrade && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y python-software-properties software-properties-common && \
