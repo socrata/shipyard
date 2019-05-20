@@ -1,0 +1,5 @@
+#!/bin/sh
+if [ -z $CHRONOS_MAIL_SERVER ] && [ ! -z $ARK_HOST ]; then
+  export CHRONOS_MAIL_SERVER=$ARK_HOST:25
+fi
+exec su socrata -c '/usr/bin/chronos --no-logger'

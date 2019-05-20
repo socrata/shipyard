@@ -19,12 +19,12 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
 # Install Java 8. If we start using this image for things other than one app, we might want to revisit this.
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
   DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confnew" --force-yes -fuy install software-properties-common && \
-  DEBIAN_FRONTEND=noninteractive add-apt-repository -y ppa:webupd8team/java && apt-get -y update && \
-  echo debconf shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && \
-  echo debconf shared/accepted-oracle-license-v1-1 seen true | /usr/bin/debconf-set-selections && \
-  DEBIAN_FRONTEND=noninteractive apt-get -y install oracle-java8-installer && \
-  rm -rf /var/cache/oracle-jdk8-installer && \
-  rm -rf /var/lib/apt/lists/*
+  DEBIAN_FRONTEND=noninteractive add-apt-repository -y ppa:openjdk-r/ppa && apt-get -y update && \
+  DEBIAN_FRONTEND=noninteractive apt-get -y install openjdk-8-jdk
+
+# Regenerate certs to work around bug in ca-certificates-java that results in missing Java certs
+# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=775775
+RUN update-ca-certificates -f
 
 # Add collectd config file
 COPY collectd-socket.conf /etc/collectd/conf.d/socket.conf
