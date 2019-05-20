@@ -60,6 +60,5 @@ Build a single image from this project, with support for specific versions:
 - [`socrata/runit-ruby:2.5.0`](runit-ruby/2.5.0): `socrata/runit` version of `socrata/ruby:2.5.0`. _(1)_
 - [`socrata/runit-ruby:2.5.3`](runit-ruby/2.5.3): `socrata/runit` version of `socrata/ruby:2.5.3`. _(1)_
 - [`socrata/runit-ruby:2.6.1`](runit-ruby/2.6.1): `socrata/runit` version of `socrata/ruby:2.6.1`. _(1)_
-- DEPRECATED [`socrata/rails4-deps`](rails4-deps): `socrata/ruby2.3` image with build tools, `unicorn`, dependency libraries, and gems.
 
 _(1)_ These images are locked to an x.y.z version of ruby
