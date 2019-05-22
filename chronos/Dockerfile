@@ -13,4 +13,4 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
 # We want to configure everything via env variables and duplicate config is an error
 RUN rm -f /etc/chronos/conf/http_port
 
-COPY ship.d /etc/ship.d
+COPY ship.d /etc/ship.d/
