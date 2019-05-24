@@ -22,7 +22,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
 RUN echo 'gem: --no-rdoc --no-ri --no-document' >> "/etc/gemrc" && \
   gem update --system && \
   gem install bundler --no-document -v 1.17.3 && \
-  gem install bundler --no-document
+  gem install bundler --no-document -v 2.0.1
 
 ##################################################
 # Python installation

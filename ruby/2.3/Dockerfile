@@ -12,7 +12,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
 # skip installing gem documentation
 RUN echo 'gem: --no-rdoc --no-ri --no-document' >> "/etc/gemrc" && \
   gem update --system && \
-  gem install bundler && \
+  gem install bundler --no-document -v 2.0.1 && \
   gem install bundler --no-document -v 1.17.3
 
 # LABEL must be last for proper base image discoverability
