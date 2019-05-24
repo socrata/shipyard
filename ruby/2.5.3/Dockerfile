@@ -96,8 +96,8 @@ RUN set -ex \
 	&& rm -r /usr/src/ruby \
 	\
 	&& gem update --system "$RUBYGEMS_VERSION" \
-	&& gem install bundler --version "$BUNDLER_VERSION" --force \
-  && gem install bundler \
+	&& gem install bundler --version "$BUNDLER_VERSION_1" --force \
+	&& gem install bundler --version "$BUNDLER_VERSION_22" --force \
 	&& rm -r /root/.gem/
 
 # LABEL must be last for proper base image discoverability
