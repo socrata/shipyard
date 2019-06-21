@@ -8,11 +8,11 @@ RUN mkdir -p /usr/local/etc \
 		echo 'update: --no-document'; \
 	} >> /usr/local/etc/gemrc
 
-ENV RUBY_MAJOR 2.3
-ENV RUBY_VERSION 2.3.6
-ENV RUBY_DOWNLOAD_SHA256 e0d969ac22d4a403c1204868bb9c0d068aa35045bb3934cf50b17b7f66059f56
-ENV RUBYGEMS_VERSION 2.7.4
-ENV BUNDLER_VERSION 1.17
+ENV RUBY_MAJOR 2.6
+ENV RUBY_VERSION 2.6.3
+ENV RUBY_DOWNLOAD_SHA256 11a83f85c03d3f0fc9b8a9b6cad1b2674f26c5aaa43ba858d4b0fcc2b54171e1
+ENV RUBYGEMS_VERSION 3.0.4
+ENV BUNDLER_VERSION 2.0.2
 
 # some of ruby's build scripts are written in ruby
 #   we purge system ruby later to make sure our final image uses what we just built
@@ -100,4 +100,4 @@ RUN set -ex \
 	&& rm -r /root/.gem/
 
 # LABEL must be last for proper base image discoverability
-LABEL repository.socrata/ruby2.3.6=""
+LABEL repository.socrata/ruby2.6.3=""
