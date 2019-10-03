@@ -25,3 +25,6 @@ Most uses of the image will be via `FROM socrata/runit-ruby:<version>` in a Dock
 - `socrata/runit-ruby:2.3.6`
 - `socrata/runit-ruby:2.5.0`
 - `socrata/runit-ruby:2.5.3`
+- `socrata/runit-ruby:2.5.7`
+- `socrata/runit-ruby:2.6.1`
+- `socrata/runit-ruby:2.6.5`

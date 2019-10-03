@@ -50,7 +50,9 @@ Build a single image from this project, with support for specific versions:
 - [`socrata/ruby:2.3.6`](ruby/2.3.6): `socrata/base` image with Ruby 2.3.6 installed. _(1)_
 - [`socrata/ruby:2.5.0`](ruby/2.5.0): `socrata/base` image with Ruby 2.5.0 installed. _(1)_
 - [`socrata/ruby:2.5.3`](ruby/2.5.3): `socrata/base` image with Ruby 2.5.3 installed. _(1)_
+- [`socrata/ruby:2.5.7`](ruby/2.5.7): `socrata/base` image with Ruby 2.5.7 installed. _(1)_
 - [`socrata/ruby:2.6.1`](ruby/2.6.1): `socrata/base` image with Ruby 2.6.1 installed. _(1)_
+- [`socrata/ruby:2.6.5`](ruby/2.6.5): `socrata/base` image with Ruby 2.6.5 installed. _(1)_
 - DEPRECATED [`socrata/ruby:2.3-admin`](ruby/2.3-admin): `socrata/base` image with Ruby 2.3 installed and a few dependencies specifically for admin team.
 - DEPRECATED [`socrata/runit-ruby`](runit-ruby): Alias for `socrata/runit-ruby:2.3`.
 - DEPRECATED [`socrata/runit-ruby:2.2`](runit-ruby/2.2): `socrata/runit` version of `socrata/ruby:2.2`.
@@ -59,6 +61,8 @@ Build a single image from this project, with support for specific versions:
 - [`socrata/runit-ruby:2.3.6`](runit-ruby/2.3.6): `socrata/runit` version of `socrata/ruby:2.3.6`. _(1)_
 - [`socrata/runit-ruby:2.5.0`](runit-ruby/2.5.0): `socrata/runit` version of `socrata/ruby:2.5.0`. _(1)_
 - [`socrata/runit-ruby:2.5.3`](runit-ruby/2.5.3): `socrata/runit` version of `socrata/ruby:2.5.3`. _(1)_
+- [`socrata/runit-ruby:2.5.7`](runit-ruby/2.5.7): `socrata/runit` version of `socrata/ruby:2.5.7`. _(1)_
 - [`socrata/runit-ruby:2.6.1`](runit-ruby/2.6.1): `socrata/runit` version of `socrata/ruby:2.6.1`. _(1)_
+- [`socrata/runit-ruby:2.6.5`](runit-ruby/2.6.5): `socrata/runit` version of `socrata/ruby:2.6.5`. _(1)_
 
 _(1)_ These images are locked to an x.y.z version of ruby
