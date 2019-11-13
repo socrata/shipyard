@@ -1,4 +1,4 @@
-FROM socrata/runit
+FROM socrata/runit-bionic
 
 # Set up environment
 ENV LANG C.UTF-8
