@@ -25,7 +25,7 @@ RUN curl -Lo /bin/envconsul https://github.com/hashicorp/envconsul/releases/down
 RUN mkdir /etc/pre-init.d
 
 # Explicitly require safe_yaml avoid "uninitialized constant Gem::SafeYAML" error due to version nightmares
-RUN ruby2.0 -r yaml -r rubygems/safe_yaml -S gem2.0 install aws-sdk-resources --pre
+RUN ruby2.0 -r yaml -r rubygems/safe_yaml -S gem2.0 install --no-document aws-sdk-resources --pre
 
 COPY env_parse set_ark_host set_ark_hostname set_metrics_dir set_local_dev_hostname ship /bin/
 COPY ship.d /etc/ship.d/
