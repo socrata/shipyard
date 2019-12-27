@@ -22,7 +22,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
     rm --recursive --force /var/lib/apt/lists/*
 
 # Explicitly require safe_yaml avoid "uninitialized constant Gem::SafeYAML" error due to version nightmares
-RUN ruby2.0 -r yaml -r rubygems/safe_yaml -S gem2.0 install aws-sdk-resources --pre
+RUN ruby2.0 -r yaml -r rubygems/safe_yaml -S gem2.0 install --no-document aws-sdk-resources --pre
 
 COPY env_parse set_ark_host set_ark_hostname set_metrics_dir /bin/
 

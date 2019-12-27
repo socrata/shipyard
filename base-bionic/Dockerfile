@@ -25,7 +25,7 @@ RUN rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /etc/pre-init.d
 
-RUN gem2.5 install aws-sdk-resources --pre
+RUN gem2.5 install --no-document aws-sdk-resources --pre
 
 COPY env_parse set_ark_host set_ark_hostname set_metrics_dir set_local_dev_hostname ship /bin/
 COPY ship.d /etc/ship.d/

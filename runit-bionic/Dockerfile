@@ -24,7 +24,7 @@ RUN apt-get -y install --no-install-recommends collectd-core && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN gem2.5 install aws-sdk-resources --pre
+RUN gem2.5 install --no-document aws-sdk-resources --pre
 
 COPY env_parse set_ark_host set_ark_hostname set_metrics_dir /bin/
 
