@@ -1,5 +1,5 @@
 socrata/ruby-bionic
-============
+===================
 
 socrata/base-bionic image with Ruby installed
 
@@ -19,4 +19,5 @@ docker run --rm -t -i -v `pwd`:/opt/my_app socrata/ruby-bionic:<version> ruby my
 
 ## Available versions
 
+- `socrata/ruby-bionic:2.5.3`
 - `socrata/ruby-bionic:2.6.5`
