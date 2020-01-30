@@ -19,7 +19,8 @@ RUN apt-get -y update && \
           dnsutils \
           python-jinja2 \
           zip \
-          ruby2.5
+          ruby2.5 \
+          iproute2
 RUN apt-get -y install --no-install-recommends collectd-core && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
