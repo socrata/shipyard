@@ -58,6 +58,7 @@ RUN set -ex \
 		libyaml-dev \
 		make \
 		patch \
+		tzdata \
 		xz-utils \
 		zlib1g-dev \
 	'\
