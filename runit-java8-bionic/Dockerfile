@@ -15,7 +15,7 @@ ENV JAVA_TOOL_OPTIONS="-Dcom.sun.management.jmxremote.port=11114 -Dcom.sun.manag
 
 COPY set_jmx_hostname /etc/my_init.d/set_jmx_hostname
 COPY collectd-jmx.conf /etc/collectd/conf.d/jmx.conf
-RUN sed -i -e '/^export PATH/a\' -e 'export LD_LIBARAY_PATH=/usr/lib/jvm/java-11-openjdk-amd64/lib/server' /etc/init.d/collectd
+RUN sed -i -e '/^export PATH/a\' -e 'export LD_LIBRARY_PATH=/usr/lib/jvm/java-11-openjdk-amd64/lib/server' /etc/init.d/collectd
 
 # LABEL must be last for proper base image discoverability
 LABEL repository.socrata/runit-java8-bionic=""
