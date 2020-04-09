@@ -21,8 +21,11 @@ RUN apt-get -y update && \
           python-jinja2 \
           zip \
           ruby2.5 \
-          iproute2
-RUN rm -rf /var/lib/apt/lists/*
+          iproute2 \
+          less \
+          netcat-openbsd \
+          vim-tiny && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /etc/pre-init.d
 
