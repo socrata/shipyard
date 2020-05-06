@@ -24,6 +24,7 @@ RUN apt-get -y update && \
           iproute2 \
           less \
           netcat-openbsd \
+          sudo \
           vim-tiny && \
     rm -rf /var/lib/apt/lists/*
 
