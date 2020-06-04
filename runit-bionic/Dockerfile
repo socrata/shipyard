@@ -38,7 +38,6 @@ CMD ["/sbin/my_init"]
 
 # Configure collectd
 RUN mkdir -p /etc/collectd/conf.d
-COPY set_collectd_hostname set_local_dev_hostname /etc/my_init.d/
 COPY collectd.conf /etc/collectd/collectd.conf
 COPY sv/collectd-run /etc/service/collectd/run
 
