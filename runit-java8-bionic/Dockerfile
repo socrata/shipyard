@@ -16,6 +16,7 @@ ENV JAVA_TOOL_OPTIONS="-Dcom.sun.management.jmxremote.port=11114 -Dcom.sun.manag
 COPY set_jmx_hostname /etc/my_init.d/set_jmx_hostname
 COPY collectd-jmx.conf /etc/collectd/conf.d/jmx.conf
 
+RUN sed -i -e '/^sleep/a\' -e 'sv stop collectd' /etc/runit/runsvdir/default/collectd/run
 RUN sed -i -e '/^sleep/a\' -e 'export LD_PRELOAD=/usr/lib/jvm/java-11-openjdk-amd64/lib/server/libjvm.so' /etc/runit/runsvdir/default/collectd/run
 
 # LABEL must be last for proper base image discoverability
