@@ -32,9 +32,6 @@ Build a single image from this project, with support for specific versions:
 
 #### Python 2
 - [`socrata/python`](python): `socrata/base` image with Python 2.7 and `pip` installed.
-- [`socrata/py_analysis`](py_analysis): `socrata/python` image with `numpy`, `scipy` and `scikit` installed.
-- [`socrata/py_nltk`](py_nltk): `socrata/py_analysis` image with `nltk` installed, along with `nltk`'s stopwords, `punkt`, `wordnet` and `maxent_treebank_pos_tagger`.
-- [`socrata/py_analyserver`](py_analyserver): `socrata/py_nltk` image with `Flask` and `flask-restful` installed.
 
 #### Python 3
 - [`socrata/python3`](python3): `socrata/base` image with Python 3.4 and `pip` installed.
