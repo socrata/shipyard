@@ -11,8 +11,8 @@ RUN mkdir -p /usr/local/etc \
 ENV RUBY_MAJOR 2.7
 ENV RUBY_VERSION 2.7.2
 ENV RUBY_DOWNLOAD_SHA256 1b95ab193cc8f5b5e59d2686cb3d5dcf1ddf2a86cb6950e0b4bdaae5040ec0d6
-ENV RUBYGEMS_VERSION 3.2.0
-ENV BUNDLER_VERSION 2.0.2
+ENV RUBYGEMS_VERSION 3.2.10
+ENV BUNDLER_VERSION 2.2.10
 
 # some of ruby's build scripts are written in ruby
 #   we purge system ruby later to make sure our final image uses what we just built
@@ -100,4 +100,4 @@ RUN set -ex \
 	&& rm -r /root/.gem/
 
 # LABEL must be last for proper base image discoverability
-LABEL repository.socrata/ruby2.6.3=""
+LABEL repository.socrata/ruby2.7.2=""
