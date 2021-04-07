@@ -46,9 +46,9 @@ end
 
 def get_file(bucket, file, key)
   begin
-    s3c = Aws::S3::Encryption::Client.new(
+    s3c = Aws::S3::EncryptionV2::Client.new(
       encryption_key: key,
-      key_wrap_schema: :rsa_oaep_sha1, # the key_wrap_schema must be rsa_oaep_sha1 for asymmetric keys
+      key_wrap_schema: :aes_gcm,
       content_encryption_schema: :aes_gcm_no_padding,
       security_profile: :v2_and_legacy # to allow reading/decrypting objects encrypted by the V1 encryption client
     )
