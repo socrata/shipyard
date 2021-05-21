@@ -33,6 +33,9 @@ COPY env_parse set_ark_host set_ark_hostname set_metrics_dir /bin/
 # Credential management bits
 COPY clortho-get /etc/my_init.d/clortho-get
 
+# Disable core dumps for CIS benchmark
+COPY coredump.conf /etc/systemd/
+
 # Create Data Directory
 ENV METRICS_ROOT_DIR /data/metrics
 CMD ["/sbin/my_init"]
