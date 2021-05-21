@@ -39,6 +39,9 @@ COPY ship.d /etc/ship.d/
 # Credential management bits
 COPY clortho-get /etc/pre-init.d/clortho-get
 
+# Disable core dumps for CIS benchmark
+COPY coredump.conf /etc/systemd/
+
 #Create Data Directory
 ENTRYPOINT ["/bin/ship"]
 CMD ["run"]
