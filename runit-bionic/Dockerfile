@@ -21,12 +21,17 @@ RUN apt-get -y update && \
           zip \
           ruby2.5 \
           iproute2
-RUN apt-get -y install --no-install-recommends collectd-core && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get -y install --no-install-recommends collectd-core
 
+RUN apt-get -y install --no-install-recommends  libssl-dev ruby2.5-dev && \
+    gem2.5 update openssl webrick && \
+    rm /usr/lib/ruby/gems/2.5.0/specifications/default/* && \
+    gem2.5 cleanup
 RUN gem2.5 install aws-sdk-s3 -v '>= 1.76.0'
 RUN gem2.5 install --no-document aws-sdk-resources --pre -v '>= 2.11.562'
+
+RUN apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 COPY env_parse set_ark_host set_ark_hostname set_metrics_dir /bin/
 
