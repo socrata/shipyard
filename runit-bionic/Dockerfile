@@ -24,8 +24,10 @@ RUN apt-get -y update && \
 RUN apt-get -y install --no-install-recommends collectd-core
 
 RUN apt-get -y install --no-install-recommends  libssl-dev ruby2.5-dev && \
-    gem2.5 update openssl webrick && \
-    rm /usr/lib/ruby/gems/2.5.0/specifications/default/* && \
+    gem2.5 update json openssl webrick && \
+    rm /usr/lib/ruby/gems/2.5.0/specifications/default/json-2.1.0.gemspec && \
+    rm /usr/lib/ruby/gems/2.5.0/specifications/default/openssl-2.1.1.gemspec && \
+    rm /usr/lib/ruby/gems/2.5.0/specifications/default/webrick-1.4.2.gemspec && \
     gem2.5 cleanup
 RUN gem2.5 install aws-sdk-s3 -v '>= 1.76.0'
 RUN gem2.5 install --no-document aws-sdk-resources --pre -v '>= 2.11.562'
