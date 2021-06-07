@@ -19,7 +19,6 @@ Most uses of the image will be via `FROM socrata/runit-ruby-bionic:<version>` in
 ### Available versions
 
 - `socrata/runit-ruby-bionic` _alias for `socrata/runit-ruby-bionic:2.7.2`_
-- `socrata/runit-ruby-bionic-2.5.3`
 - `socrata/runit-ruby-bionic-2.7.2` _alias for `socrata/runit-ruby-bionic:2.7.2`_
 - `socrata/runit-ruby-bionic:2.7.2`
 - `socrata/runit-ruby-bionic-3.0.0` _alias for `socrata/runit-ruby-bionic:3.0.0`_
