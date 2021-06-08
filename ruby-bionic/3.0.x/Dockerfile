@@ -8,7 +8,7 @@ RUN mkdir -p /usr/local/etc \
 		echo 'update: --no-document'; \
 	} >> /usr/local/etc/gemrc
 
-ENV RUBY_MAJOR 2.6
+ENV RUBY_MAJOR 3.0
 
 # some of ruby's build scripts are written in ruby
 #   we purge system ruby later to make sure our final image uses what we just built
@@ -92,4 +92,4 @@ RUN set -ex \
 	&& rm -r /usr/src/ruby
 
 # LABEL must be last for proper base image discoverability
-LABEL repository.socrata/ruby2.6=""
+LABEL repository.socrata/ruby3.0.x=""

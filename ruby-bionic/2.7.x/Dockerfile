@@ -92,4 +92,4 @@ RUN set -ex \
 	&& rm -r /usr/src/ruby
 
 # LABEL must be last for proper base image discoverability
-LABEL repository.socrata/ruby2.7=""
+LABEL repository.socrata/ruby2.7.x=""
