@@ -15,82 +15,21 @@ ENV RUBY_MAJOR 3.0
 RUN set -ex \
 	\
 	&& buildDeps=' \
-		bison \
-		ruby \
-		wget \
-		autoconf \
-		automake \
-		bzip2 \
-		dpkg-dev \
-		file \
-		g++ \
-		gcc \
+	        libssl-dev \
+	        libreadline-dev \
+        	zlib1g-dev \
                 git \
-		imagemagick \
-		libbz2-dev \
-		libc6-dev \
-		libcurl4-openssl-dev \
-		libdb-dev \
-		libevent-dev \
-		libffi-dev \
-		libgdbm-dev \
-		libgeoip-dev \
-		libglib2.0-dev \
-		libjpeg-dev \
-		libkrb5-dev \
-		liblzma-dev \
-		libmagickcore-dev \
-		libmagickwand-dev \
-		libncurses5-dev \
-		libncursesw5-dev \
-		libpng-dev \
-		libpq-dev \
-		libreadline-dev \
-		libsqlite3-dev \
-		libssl-dev \
-		libtool \
-		libwebp-dev \
-		libxml2-dev \
-		libxslt-dev \
-		libyaml-dev \
-		make \
-		patch \
-		tzdata \
-		xz-utils \
-		zlib1g-dev \
 	'\
 	&& apt-get update \
 	&& apt-get install -y --no-install-recommends $buildDeps \
 	&& rm -rf /var/lib/apt/lists/* \
 	\
-        && git clone https://github.com/ruby/ruby.git /usr/src/ruby/ \
+        && git clone https://github.com/rbenv/ruby-build.git /tmp/ruby-build \ 
         \
-	&& cd /usr/src/ruby \
+	&& PREFIX=/usr/local /tmp/ruby-build/install.sh \
         \
-        && majorVersionUnderscored=$(echo $RUBY_MAJOR | tr "." "_") \
-        && latestMinor=$(git tag -l v${majorVersionUnderscored}* | cut -d "_" -f 3 | sort -un | tail -1) \
-        && git checkout tags/v${majorVersionUnderscored}_${latestMinor} \
-	\
-# hack in "ENABLE_PATH_CHECK" disabling to suppress:
-#   warning: Insecure world writable dir
-	&& { \
-		echo '#define ENABLE_PATH_CHECK 0'; \
-		echo; \
-		cat file.c; \
-	} > file.c.new \
-	&& mv file.c.new file.c \
-	\
-	&& autoconf \
-	&& gnuArch="$(dpkg-architecture -qDEB_BUILD_GNU_TYPE)" \
-	&& ./configure \
-		--build="$gnuArch" \
-		--disable-install-doc \
-		--enable-shared \
-	&& make -j "$(nproc)" \
-	&& make install \
-	\
-	&& cd / \
-	&& rm -r /usr/src/ruby
+        && ruby-build $(ruby-build -l | grep "^${RUBY_MAJOR}\.") /usr/local/ \
+        && rm -r /tmp/ruby-build/
 
 # LABEL must be last for proper base image discoverability
-LABEL repository.socrata/runit-ruby-bionic/2.7=""
+LABEL repository.socrata/runit-ruby-bionic/3.0.x=""
