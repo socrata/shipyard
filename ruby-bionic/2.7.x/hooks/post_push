@@ -4,7 +4,7 @@ set -ex
 if [ $DOCKER_TAG != "latest" ]; then
     MINOR_VERSION=$(echo $DOCKER_TAG | cut -d "." -f 1-2)
 
-    RUBY_VERSION=$(docker run $IMAGE_NAME ruby /usr/local/bin/ruby-version.rb 2> /dev/null | grep "${MINOR_VERSION}.")
+    RUBY_VERSION=$(docker run --entrypoint ruby-version.rb $IMAGE_NAME)
 
     docker tag $IMAGE_NAME $DOCKER_REPO:$RUBY_VERSION
     docker push $DOCKER_REPO:$RUBY_VERSION
