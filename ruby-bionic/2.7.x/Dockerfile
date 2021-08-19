@@ -31,5 +31,7 @@ RUN set -ex \
         && ruby-build $(ruby-build -l | grep "^${RUBY_MAJOR}\.") /usr/local/ \
 	&& rm -r /tmp/ruby-build/
 
+COPY ruby-version.rb /usr/local/bin/ruby-version.rb
+
 # LABEL must be last for proper base image discoverability
 LABEL repository.socrata/ruby2.7.x=""
