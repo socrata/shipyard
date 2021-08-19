@@ -1,1 +1,1 @@
-dockerhub-hooks/ruby-builds/post_push
+../../../dockerhub-hooks/ruby-builds/post_push
