@@ -1,0 +1,36 @@
+#!/bin/bash
+
+set -xeo pipefail
+
+tmpdir="$(mktemp -d /tmp/ex-setup.XXXXXXX)"
+
+function cleanup() {
+    rm -rf "$tmpdir"
+}
+
+trap cleanup EXIT
+
+cd "$tmpdir"
+
+export DEBIAN_FRONTEND=noninteractive
+apt-get -y install libncurses-dev libssl-dev
+
+curl -s -L --proto "=https" https://github.com/erlang/otp/releases/download/OTP-24.1.5/otp_src_24.1.5.tar.gz > otp_src_24.1.5.tar.gz
+curl -s -L --proto "=https" https://github.com/elixir-lang/elixir/archive/v1.12.1.tar.gz > v1.12.1.tar.gz
+
+sha256sum --check - <<EOF
+a6b28da8a6382d174bb18be781476c7ce36aae792887dc629f331b227dfad542  otp_src_24.1.5.tar.gz
+96167d614b9c483efc54bd7898c3eea4768569a77dd8892ada85d7800d5e3ea4  v1.12.1.tar.gz
+EOF
+
+tar xzf otp_src_24.1.5.tar.gz
+pushd otp_src_24.1.5
+./configure
+make
+make install
+popd
+
+tar xzf v1.12.1.tar.gz
+pushd elixir-1.12.1
+make install
+popd
