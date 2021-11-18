@@ -29,6 +29,7 @@ RUN gem2.5 install aws-sdk-s3 -v '>= 1.76.0'
 RUN gem2.5 install --no-document aws-sdk-resources --pre -v '>= 2.11.562'
 
 COPY env_parse set_ark_host set_ark_hostname set_metrics_dir /bin/
+COPY set_local_dev_hostname /etc/my_init.d/
 
 # Credential management bits
 COPY clortho-get /etc/my_init.d/clortho-get
