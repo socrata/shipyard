@@ -10,6 +10,9 @@ RUN mkdir -p /usr/local/etc \
 
 ENV RUBY_MAJOR 2.7
 
+# Allow installing a specific version of bundler if needed
+ENV BUNDLER_VERSION 2.2.33
+
 # some of ruby's build scripts are written in ruby
 #   we purge system ruby later to make sure our final image uses what we just built
 RUN set -ex \
@@ -29,7 +32,11 @@ RUN set -ex \
 	&& PREFIX=/usr/local /tmp/ruby-build/install.sh \
 	\
         && ruby-build $(ruby-build -l | grep "^${RUBY_MAJOR}\.") /usr/local/ \
-	&& rm -r /tmp/ruby-build/
+	&& rm -r /tmp/ruby-build/ \
+        \
+        && if [ -n "$BUNDLER_VERSION" ] ; then \
+             gem install bundler:$BUNDLER_VERSION ;\
+           fi
 
 COPY ruby-version.rb /usr/local/bin/ruby-version.rb
 
