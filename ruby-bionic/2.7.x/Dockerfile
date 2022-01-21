@@ -32,10 +32,11 @@ RUN set -ex \
 	&& PREFIX=/usr/local /tmp/ruby-build/install.sh \
 	\
         && ruby-build $(ruby-build -l | grep "^${RUBY_MAJOR}\.") /usr/local/ \
-	&& rm -r /tmp/ruby-build/ \
-        \
+	&& rm -r /tmp/ruby-build/ \ 
         && if [ -n "$BUNDLER_VERSION" ] ; then \
-             gem install bundler:$BUNDLER_VERSION ;\
+	     mv $(ruby -e 'puts File.join(Gem.default_dir,"specifications","default")')/*bundler*.gemspec $(ruby -e 'puts File.join(Gem.default_dir, "specifications")') \
+	     && gem uninstall bundler \
+             && gem install --default bundler:$BUNDLER_VERSION ;\
            fi
 
 COPY ruby-version.rb /usr/local/bin/ruby-version.rb
