@@ -36,7 +36,7 @@ RUN set -ex \
         && if [ -n "$BUNDLER_VERSION" ] ; then \
           mv $(ruby -e 'puts File.join(Gem.default_dir,"specifications","default")')/*bundler*.gemspec $(ruby -e 'puts File.join(Gem.default_dir, "specifications")') \
           && gem uninstall bundler \
-          && gem install --default bundler:$BUNDLER_VERSION ;\
+          && gem install bundler:$BUNDLER_VERSION ;\
         fi
 
 COPY ruby-version.rb /usr/local/bin/ruby-version.rb
