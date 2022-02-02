@@ -1,4 +1,4 @@
-socrata/runit-bionic
+socrata/runit-focal
 ============
 
 Image based on phusion/baseimage-docker that establises a base set of patterns and tools for building other containers with support for multiple processes via runit.
@@ -27,7 +27,7 @@ This script lets a service owner build configuration files that are created at r
 
 ### Usage
 
-Any container built on top of the socrata/runit-bionic image will default to running the whatever services are configured in /etc/service according via runit.
+Any container built on top of the socrata/runit-focal image will default to running the whatever services are configured in /etc/service according via runit.
 
 Anything placed in /etc/my_init.d will be run on startup in lexigraphical order before runit is invoked. A non-zero return code from any of these will halt the container.
 
