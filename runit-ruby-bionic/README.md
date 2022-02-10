@@ -21,3 +21,4 @@ Most uses of the image will be via `FROM socrata/runit-ruby-bionic:<version>` in
 - `socrata/runit-ruby-bionic` _alias for `socrata/runit-ruby-bionic:2.7.x`_
 - `socrata/runit-ruby-bionic:2.7.x`
 - `socrata/runit-ruby-bionic:3.0.x` 
+- `socrata/runit-ruby-bionic:3.1.x` 

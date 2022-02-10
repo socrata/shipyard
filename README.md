@@ -44,3 +44,5 @@ Build a single image from this project, with support for specific versions:
 - [`socrata/runit-ruby-bionic:2.7.x`](runit-ruby-bionic/2.7.x): `socrata/runit-bionic` version of `socrata/ruby-bionic:2.7.x`.
 - [`socrata/ruby-bionic:3.0.x`](ruby-bionic/3.0.x): `socrata/base-bionic` image with the latest point release under Ruby 3.0.
 - [`socrata/runit-ruby-bionic:3.0.x`](runit-ruby-bionic/3.0.x): `socrata/runit-bionic` version of `socrata/ruby-bionic:3.0.x`.
+- [`socrata/ruby-bionic:3.1.x`](ruby-bionic/3.1.x): `socrata/base-bionic` image with the latest point release under Ruby 3.1.
+- [`socrata/runit-ruby-bionic:3.1.x`](runit-ruby-bionic/3.1.x): `socrata/runit-bionic` version of `socrata/ruby-bionic:3.1.x`.
