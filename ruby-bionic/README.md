@@ -21,3 +21,4 @@ docker run --rm -t -i -v `pwd`:/opt/my_app socrata/ruby-bionic:<version> ruby my
 
 - `socrata/ruby-bionic:2.7.x`
 - `socrata/ruby-bionic:3.0.x`
+- `socrata/ruby-bionic:3.1.x`
