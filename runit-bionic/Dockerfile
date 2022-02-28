@@ -8,7 +8,6 @@ ENV DEBIAN_FRONTEND noninteractive
 # Add a user so containers can run things as non root.  Not perfect since it is shared across containers,
 # but eventually uid namespacing will hopefully fix that.
 RUN groupadd -r socrata && useradd -r -g socrata socrata
-RUN groupadd -g 31415 metrics && usermod -a -G metrics socrata
 
 RUN apt-get -y update && \
     apt-get -y dist-upgrade; \
@@ -28,7 +27,7 @@ RUN apt-get -y install --no-install-recommends collectd-core && \
 RUN gem2.5 install aws-sdk-s3 -v '>= 1.76.0'
 RUN gem2.5 install --no-document aws-sdk-resources --pre -v '>= 2.11.562'
 
-COPY env_parse set_ark_host set_ark_hostname set_metrics_dir /bin/
+COPY env_parse set_ark_host set_ark_hostname /bin/
 COPY set_local_dev_hostname /etc/my_init.d/
 
 # Credential management bits
@@ -37,8 +36,6 @@ COPY clortho-get /etc/my_init.d/clortho-get
 # Disable core dumps for CIS benchmark
 COPY coredump.conf /etc/systemd/
 
-# Create Data Directory
-ENV METRICS_ROOT_DIR /data/metrics
 CMD ["/sbin/my_init"]
 
 # Configure collectd
