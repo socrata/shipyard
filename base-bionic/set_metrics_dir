@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-export METRICS_DIR="$METRICS_ROOT_DIR/$HOSTNAME"
-
-mkdir -p $METRICS_DIR
-chown -R socrata:metrics $METRICS_DIR
-chmod -R 774 $METRICS_DIR
-chmod g+s $METRICS_DIR
