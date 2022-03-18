@@ -10,8 +10,10 @@ RUN apt-get -y update && \
 
 RUN ln -s /usr/bin/python3.8 /usr/local/bin/python && \
     ln -s /usr/bin/python3.8 /usr/local/bin/python3 && \
-    ln -s /usr/bin/pydoc3 /usr/local/bin/pydoc && \
-    ln -s /usr/bin/python3-config /usr/local/bin/python-config
+    ln -s /usr/bin/pydoc3.8 /usr/local/bin/pydoc && \
+    ln -s /usr/bin/pydoc3.8 /usr/local/bin/pydoc3 && \
+    ln -s /usr/bin/python3.8-config /usr/local/bin/python-config && \
+    ln -s /usr/bin/python3.8-config /usr/local/bin/python3-config
 
 # collectd configuration
 COPY collectd.statsd.conf /etc/collectd/conf.d/statsd.conf
