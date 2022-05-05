@@ -1,4 +1,4 @@
-socrata/base-bionic
+socrata/base-focal
 ============
 
 Like the base Ubuntu image that establises a base set of patterns and
@@ -19,15 +19,15 @@ This script lets a service owner build configuration files that are created at r
 
 ### Usage
 
-Any container built on top of the socrata/base-xenial image will default to running the whatever script is dropped in `/etc/ship.d/run`. Alternatively, you can invoke any script dropped in /etc/ship.d/ or any executable in the container via the CMD argument:
+Any container built on top of the socrata/base-focal image will default to running the whatever script is dropped in `/etc/ship.d/run`. Alternatively, you can invoke any script dropped in /etc/ship.d/ or any executable in the container via the CMD argument:
 
 ```bash
-    $ docker pull socrata/base-bionic
-    $ docker run --rm -t -i socrata/base-bionic [CMD]
+    $ docker pull socrata/base-focal
+    $ docker run --rm -t -i socrata/base-focal [CMD]
 
     # Examples:
-    $ docker run --rm -t -i socrata/base-bionic # runs /etc/ship.d/run in the container
-    $ docker run --rm -t -i socrata/base-bionic bash        # launch a bash shell (on PATH)
+    $ docker run --rm -t -i socrata/base-focal # runs /etc/ship.d/run in the container
+    $ docker run --rm -t -i socrata/base-focal bash        # launch a bash shell (on PATH)
 
     # From inside the container, launch the /etc/shipd.d/run
     docker-host$ ship [run]
@@ -38,7 +38,7 @@ Any container built on top of the socrata/base-xenial image will default to runn
 Assuming we build an image called awesome_sauce from a Dockerfile like this:
 
 ```Dockerfile
-    FROM socrata/base-bionic
+    FROM socrata/base-focal
     ADD run /etc/ship.d/
     ADD migrate /etc/ship.d/
 ```
