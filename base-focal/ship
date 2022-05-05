@@ -1,0 +1,36 @@
+#!/bin/bash
+#
+# This script servces as a flexible docker ENTRYPOINT
+# - Add a script to /etc/ship.d/run to be the default execution
+# - Other scripts in /etc/ship.d/ can be specified as the docker command
+# - Any executable (absolute or on PATH) can also be specified as the command
+# - Adds a standard way of getting the docker host IP
+
+set -e -x -v
+
+# Try to give mesos time to fetch the logs before the container exits on error
+trap 'echo "Unexpected exit from ship, pausing to allow log collection" && sleep 20' EXIT
+
+COMMAND=${1:-run}
+shift || true
+
+source /bin/set_ark_host # in /etc/hosts
+source /bin/set_ark_hostname
+source /bin/set_local_dev_hostname
+
+
+if [ -d /etc/pre-init.d ]; then
+    run-parts -v --exit-on-error /etc/pre-init.d
+fi
+
+# Raise the ulimit - default of 1024 is stone age
+ulimit -n 10000
+
+if [ -e /etc/ship.d/$COMMAND ]; then
+  exec /etc/ship.d/$COMMAND $@
+else
+  command -v $COMMAND >/dev/null 2>&1 || {
+      echo >&2 "Aborting. Not a valid command: $COMMAND"; exit 1;
+  }
+  exec $COMMAND $@
+fi
