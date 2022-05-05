@@ -1,24 +1,22 @@
-socrata/ruby-bionic
+socrata/ruby-focal
 ===================
 
-socrata/base-bionic image with Ruby installed
+socrata/base-focal image with Ruby installed
 
 ## Usage
 
-Most uses of the image will be via `FROM socrata/ruby-bionic:<version>` in a Dockerfile, nonetheless, you can run a Ruby container as follows:
+Most uses of the image will be via `FROM socrata/ruby-focal:<version>` in a Dockerfile, nonetheless, you can run a Ruby container as follows:
 
 ```bash
-docker pull socrata/ruby-bionic:<version>
+docker pull socrata/ruby-focal:<version>
 
 # Launch shell in the container
-docker run --rm -t -i socrata/ruby-bionic:<version> bash
+docker run --rm -t -i socrata/ruby-focal:<version> bash
 
 # Bind mount a directory into the container and build or run something
-docker run --rm -t -i -v `pwd`:/opt/my_app socrata/ruby-bionic:<version> ruby my_app.rb
+docker run --rm -t -i -v `pwd`:/opt/my_app socrata/ruby-focal:<version> ruby my_app.rb
 ```
 
 ## Available versions
 
-- `socrata/ruby-bionic:2.7.x`
-- `socrata/ruby-bionic:3.0.x`
-- `socrata/ruby-bionic:3.1.x`
+- `socrata/ruby-focal:3.1.x`
