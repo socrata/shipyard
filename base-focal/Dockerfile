@@ -35,7 +35,7 @@ COPY env_parse set_ark_host set_ark_hostname set_local_dev_hostname ship /bin/
 COPY ship.d /etc/ship.d/
 
 # Credential management bits
-COPY clortho-get /etc/pre-init.d/clortho-get
+ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/clortho-get /etc/pre-init.d/clortho-get
 
 # Disable core dumps for CIS benchmark
 COPY coredump.conf /etc/systemd/
