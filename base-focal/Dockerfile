@@ -31,14 +31,18 @@ RUN mkdir /etc/pre-init.d
 RUN gem2.7 install aws-sdk-s3 -v '>= 1.76.0'
 RUN gem2.7 install --no-document aws-sdk-resources --pre -v '>= 2.11.562'
 
-COPY env_parse set_ark_host set_ark_hostname set_local_dev_hostname ship /bin/
+COPY ship /bin/
 COPY ship.d /etc/ship.d/
 
+# Add shared files from shipyard repo, this is done to keep these files in sync across all images
+ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/env_parse /bin/
+ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/set_ark_host /bin/
+ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/set_ark_hostname /bin/
+ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/set_local_dev_hostname /bin/
 # Credential management bits
 ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/clortho-get /etc/pre-init.d/clortho-get
-
 # Disable core dumps for CIS benchmark
-COPY coredump.conf /etc/systemd/
+ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/coredump.conf /etc/systemd/
 
 #Create Data Directory
 ENTRYPOINT ["/bin/ship"]

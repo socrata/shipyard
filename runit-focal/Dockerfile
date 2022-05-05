@@ -27,14 +27,15 @@ RUN apt-get -y install --no-install-recommends collectd-core && \
 RUN gem2.7 install aws-sdk-s3 -v '>= 1.76.0'
 RUN gem2.7 install --no-document aws-sdk-resources --pre -v '>= 2.11.562'
 
-COPY env_parse set_ark_host set_ark_hostname /bin/
-COPY set_local_dev_hostname /etc/my_init.d/
-
+# Add shared files from shipyard repo, this is done to keep these files in sync across all images
+ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/env_parse /bin/
+ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/set_ark_host /bin/
+ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/set_ark_hostname /bin/
+ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/set_local_dev_hostname /etc/my_init.d/
 # Credential management bits
 ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/clortho-get /etc/pre-init.d/clortho-get
-
 # Disable core dumps for CIS benchmark
-COPY coredump.conf /etc/systemd/
+ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/coredump.conf /etc/systemd/
 
 CMD ["/sbin/my_init"]
 
