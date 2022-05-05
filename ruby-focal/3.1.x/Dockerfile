@@ -1,4 +1,4 @@
-FROM socrata/base-bionic
+FROM socrata/base-focal
 MAINTAINER Socrata <sysadmin@socrata.com>
 
 # skip installing gem documentation

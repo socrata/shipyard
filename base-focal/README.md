@@ -2,7 +2,7 @@ socrata/base-focal
 ============
 
 Like the base Ubuntu image that establises a base set of patterns and
-tools for building other containers except using Ubuntu 18.04
+tools for building other containers except using Ubuntu 20.04
 
 ### Features
 
