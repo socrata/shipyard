@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#
 # This script is intended to be sourced into a ship file to set the IP
 # of the gateway or host.
 case $ARK_HOST in
