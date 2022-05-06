@@ -36,6 +36,8 @@ ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/set_local_dev_
 ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/clortho-get /etc/pre-init.d/clortho-get
 # Disable core dumps for CIS benchmark
 ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/coredump.conf /etc/systemd/
+# Mark these as executable
+RUN chmod +x /bin/env_parse /bin/set_ark_host /bin/set_ark_hostname /etc/my_init.d/set_local_dev_hostname /etc/pre-init.d/clortho-get
 
 CMD ["/sbin/my_init"]
 
