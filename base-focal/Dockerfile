@@ -44,7 +44,7 @@ ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/clortho-get /e
 # Disable core dumps for CIS benchmark
 ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/coredump.conf /etc/systemd/
 # Mark these as executable
-RUN chmod +x /bin/env_parse /bin/set_ark_host /bin/set_ark_hostname /bin/set_local_dev_hostname /etc/pre-init.d/clortho-get
+RUN chmod 755 /bin/env_parse /bin/set_ark_host /bin/set_ark_hostname /bin/set_local_dev_hostname /etc/pre-init.d/clortho-get
 
 #Create Data Directory
 ENTRYPOINT ["/bin/ship"]
