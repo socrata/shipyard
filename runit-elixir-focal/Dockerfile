@@ -29,9 +29,9 @@ RUN cd otp_src_25.0 && ./configure --prefix=/opt/erlang && make && make install
 
 ENV PATH /opt/erlang/bin:$PATH
 
-RUN wget https://github.com/elixir-lang/elixir/archive/v1.12.1.tar.gz
-RUN tar xzf v1.12.1.tar.gz
-RUN cd elixir-1.12.1 && env PREFIX=/opt/elixir make install
+RUN wget https://github.com/elixir-lang/elixir/archive/v1.13.4.tar.gz
+RUN tar xzf v1.13.4.tar.gz
+RUN cd elixir-1.13.4 && env PREFIX=/opt/elixir make install
 
 FROM base
 
