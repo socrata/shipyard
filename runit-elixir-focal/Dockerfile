@@ -18,7 +18,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
 
 FROM base AS build
 
-RUN DEBIAN_FRONTED=noninteractive apt-get -y install wget libncurses-dev libssl-dev
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install wget libncurses-dev libssl-dev
 
 RUN mkdir /build /opt/erlang /opt/elixir
 WORKDIR /build
