@@ -6,15 +6,21 @@ ENV LANG C.UTF-8
 # Add erlang solutions repo
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
     DEBIAN_FRONTEND=noninteractive apt-get -y install wget && \
-    wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb && \
-    DEBIAN_FRONTEND=noninteractive dpkg -i erlang-solutions_1.0_all.deb
+    wget https://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb && \
+    DEBIAN_FRONTEND=noninteractive dpkg -i erlang-solutions_2.0_all.deb && \
+    rm erlang-solutions_2.0_all.deb
 
 # Install erlang & elixir
 # NOTE: esl-erlang & elixir are pinned to specific versions
 # Any changes to these versions should be synchronized in the
 # jenkins-workers cookbook and a new AMI should be built.
+# erlang repos stopped distributing elixir via apt for bionic
+# so it needs to be downloaded and installed manually
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
-    DEBIAN_FRONTEND=noninteractive apt-get -y install esl-erlang=1:24.1.* elixir=1.12.*
+    DEBIAN_FRONTEND=noninteractive apt-get -y install esl-erlang=1:25.0.* && \
+    wget https://packages.erlang-solutions.com/ubuntu/pool/elixir_1.12.2-1~ubuntu~bionic_all.deb && \
+    DEBIAN_FRONTEND=noninteractive dpkg -i elixir_1.12.2-1~ubuntu~bionic_all.deb && \
+    rm elixir_1.12.2-1~ubuntu~bionic_all.deb
 
 # Install Java 8. If we start using this image for things other than one app, we might want to revisit this.
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
