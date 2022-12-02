@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Add a user so containers can run things as non root.  Not perfect since it is shared across containers,
 # but eventually uid namespacing will hopefully fix that.
-RUN groupadd -r socrata && useradd -r -g socrata socrata
+RUN groupadd -r socrata && useradd -m -r -g socrata socrata
 
 RUN apt-get -y update && \
     apt-get -y dist-upgrade; \
