@@ -11,7 +11,7 @@ RUN echo "deb-src https://deb.nodesource.com/$NODE_VERSION $(lsb_release -s -c) 
     tee -a /etc/apt/sources.list.d/nodesource.list
 
 RUN apt-get -y update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y libyajl2 nodejs
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y libyajl2 nodejs git
 
 # LABEL must be last for proper base image discoverability
 LABEL repository.socrata/nodejs-bionic/14x=""
