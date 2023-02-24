@@ -36,10 +36,6 @@ Build a single image from this project, with support for specific versions:
 - [`socrata/python3-bionic`](python3-bionic): `socrata/base-bionic` image with Python 3.6 and `pip` installed.
 
 ### Ruby
-- [`socrata/ruby-bionic:2.6.5`](ruby-bionic/2.6.5): `socrata/base-bionic` image with Ruby 2.6.5 installed.
-- [`socrata/ruby-bionic:2.6.x`](ruby-bionic/2.6.x): `socrata/base-bionic` image with the latest point release under Ruby 2.6.
-- [`socrata/ruby-bionic:2.7.2`](ruby-bionic/2.7.2): `socrata/base-bionic` image with Ruby 2.7.2 installed.
-- [`socrata/runit-ruby-bionic:2.7.2`](runit-ruby-bionic/2.7.2): `socrata/runit-bionic` version of `socrata/ruby-bionic:2.7.2`.
 - [`socrata/ruby-bionic:2.7.x`](ruby-bionic/2.7.x): `socrata/base-bionic` image with the latest point release under Ruby 2.7.
 - [`socrata/runit-ruby-bionic:2.7.x`](runit-ruby-bionic/2.7.x): `socrata/runit-bionic` version of `socrata/ruby-bionic:2.7.x`.
 - [`socrata/ruby-bionic:3.0.x`](ruby-bionic/3.0.x): `socrata/base-bionic` image with the latest point release under Ruby 3.0.
