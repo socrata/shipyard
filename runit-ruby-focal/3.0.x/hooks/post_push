@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -ex
+
+# This file is used by Docker Hub as a post push action.
+# Other than MINOR_VERSION and RUBY_VERSION, all variables are made available
+# through Docker Hub's automated builds.
+# https://docs.docker.com/docker-hub/builds/advanced/
+
+if [ $DOCKER_TAG != "latest" ]; then
+    # Get the x.y.z Ruby version from the image we just built
+    RUBY_VERSION=$(docker run --entrypoint ruby-version.rb $IMAGE_NAME)
+
+    echo "Tagging $IMAGE_NAME as $DOCKER_REPO:$RUBY_VERSION and pushing."
+    docker tag $IMAGE_NAME $DOCKER_REPO:$RUBY_VERSION
+    docker push $DOCKER_REPO:$RUBY_VERSION
+else
+    # No need to retag latest and push for this repo.
+    # latest is built and pushed separately by something that already does this.
+   echo "Not retagging latest."
+fi
+
