@@ -1,5 +1,5 @@
 FROM socrata/runit-focal
-MAINTAINER Socrata <sysadmin@socrata.com>
+LABEL maintainer="Socrata 'sysadmin@socrata.com'"
 
 # skip installing gem documentation
 RUN mkdir -p /usr/local/etc \
