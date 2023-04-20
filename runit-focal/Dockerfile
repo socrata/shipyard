@@ -16,7 +16,8 @@ RUN apt-get -y update && \
           locales \
           curl \
           dnsutils \
-          python-jinja2 \
+          python3-jinja2 \
+          python-is-python3 \
           zip \
           ruby2.7 \
           iproute2
