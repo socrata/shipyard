@@ -1,7 +1,7 @@
 socrata/python-binoic
 =====================
 
-socrata/base-focal image with python 3.6 and pip installed.
+socrata/base-focal image with python 3.8 and pip installed.
 
 ### Usage
 
