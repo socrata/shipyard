@@ -2,9 +2,6 @@ socrata/java-focal
 ====================
 
 socrata/base-focal image with OpenJDK installed.
-Versions available:
- - 11
- - 17
 
 ### Usage
 
