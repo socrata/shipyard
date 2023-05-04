@@ -10,4 +10,4 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
 RUN update-ca-certificates -f
 
 # LABEL must be last for proper base image discoverability
-LABEL repository.socrata/java-focal=""
+LABEL repository.socrata/java-focal:17=""

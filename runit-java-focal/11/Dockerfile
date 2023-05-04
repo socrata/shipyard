@@ -17,4 +17,4 @@ COPY collectd-jmx.conf /etc/collectd/conf.d/jmx.conf
 RUN sed -i -e '/^sleep/a\' -e 'export LD_PRELOAD=/usr/lib/jvm/java-11-openjdk-amd64/lib/server/libjvm.so' /etc/runit/runsvdir/default/collectd/run
 
 # LABEL must be last for proper base image discoverability
-LABEL repository.socrata/runit-java-focal=""
+LABEL repository.socrata/runit-java-focal:11=""

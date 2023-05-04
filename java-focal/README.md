@@ -1,4 +1,4 @@
-socrata/java8-focal
+socrata/java-focal
 ====================
 
 socrata/base-focal image with OpenJDK installed.
