@@ -20,3 +20,6 @@ Most uses of the image will be via `FROM socrata/runit-java-focal:<version>` in 
 
 - `socrata/runit-java-focal:11`
 - `socrata/runit-java-focal:17`
+
+## runit
+For more information on runit-based images, see [`socrata/runit-focal`](runit-focal).
