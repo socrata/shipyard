@@ -21,3 +21,6 @@ Most uses of the image will be via `FROM socrata/runit-ruby-focal:<version>` in 
 - `socrata/runit-ruby-focal:3.0.x`
 - `socrata/runit-ruby-focal:3.1.x`
 - `socrata/runit-ruby-focal:3.2.x`
+
+## runit
+For more information on runit-based images, see [`socrata/runit-focal`](../runit-focal).
