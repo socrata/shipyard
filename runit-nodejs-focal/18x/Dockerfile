@@ -4,12 +4,12 @@ MAINTAINER Socrata <sysadmin@socrata.com>
 # Add the NodeSource apt repository. Instructions taken from:
 # https://github.com/nodesource/distributions/blob/master/README.md#debmanual
 ENV NODE_VERSION=node_18.x
-RUN curl -sSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
-RUN echo "deb https://deb.nodesource.com/$NODE_VERSION $(lsb_release -s -c) main" | \
-    tee /etc/apt/sources.list.d/nodesource.list
-RUN echo "deb-src https://deb.nodesource.com/$NODE_VERSION $(lsb_release -s -c) main" | \
+RUN mkdir -p /etc/apt/keyrings && \
+    curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
+    echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/$NODE_VERSION nodistro main" | \
+    tee /etc/apt/sources.list.d/nodesource.list && \
+    echo "deb-src [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/$NODE_VERSION nodistro main" | \
     tee -a /etc/apt/sources.list.d/nodesource.list
-
 RUN apt-get -y update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y libyajl2 nodejs git
 
