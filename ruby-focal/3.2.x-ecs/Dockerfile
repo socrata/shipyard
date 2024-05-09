@@ -38,4 +38,4 @@ RUN set -ex \
 COPY ruby-version.rb /usr/local/bin/ruby-version.rb
 
 # LABEL must be last for proper base image discoverability
-LABEL repository.socrata/ruby-focal:3.2.x=""
+LABEL repository.socrata/ruby-focal:3.2.x-ecs=""
