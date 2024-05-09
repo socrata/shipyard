@@ -38,11 +38,15 @@ COPY ship.d /etc/ship.d/
 
 # Add shared files from shipyard repo, this is done to keep these files in sync across all images
 ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/env_parse /bin/
+ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/set_ark_host /bin/
+ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/set_ark_hostname /bin/
 ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/set_local_dev_hostname /bin/
+# Credential management bits
+ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/clortho-get /etc/pre-init.d/clortho-get
 # Disable core dumps for CIS benchmark
 ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/coredump.conf /etc/systemd/
 # Mark these as executable
-RUN chmod 755 /bin/env_parse /bin/set_local_dev_hostname
+RUN chmod 755 /bin/env_parse /bin/set_ark_host /bin/set_ark_hostname /bin/set_local_dev_hostname /etc/pre-init.d/clortho-get
 
 #Create Data Directory
 ENTRYPOINT ["/bin/ship"]

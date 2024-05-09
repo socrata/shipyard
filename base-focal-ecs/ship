@@ -14,6 +14,11 @@ trap 'echo "Unexpected exit from ship, pausing to allow log collection" && sleep
 COMMAND=${1:-run}
 shift || true
 
+# Only set up ark_host and ark_hostname if we're not in ECS
+if [ "$AWS_EXECUTION_ENV" != "AWS_ECS_FARGATE" ];then
+  source /bin/set_ark_host # in /etc/hosts
+  source /bin/set_ark_hostname
+fi
 source /bin/set_local_dev_hostname
 
 
