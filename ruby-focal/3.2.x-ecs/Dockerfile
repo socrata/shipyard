@@ -11,7 +11,6 @@ RUN mkdir -p /usr/local/etc \
 ENV RUBY_MAJOR 3.2
 
 # some of ruby's build scripts are written in ruby
-#   we purge system ruby later to make sure our final image uses what we just built
 RUN set -ex \
 	\
 	&& buildDeps=' \
