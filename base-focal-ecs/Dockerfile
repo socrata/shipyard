@@ -39,12 +39,10 @@ COPY ship.d /etc/ship.d/
 # Add shared files from shipyard repo, this is done to keep these files in sync across all images
 ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/env_parse /bin/
 ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/set_local_dev_hostname /bin/
-# Credential management bits
-ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/clortho-get /etc/pre-init.d/clortho-get
 # Disable core dumps for CIS benchmark
 ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/coredump.conf /etc/systemd/
 # Mark these as executable
-RUN chmod 755 /bin/env_parse /bin/set_local_dev_hostname /etc/pre-init.d/clortho-get
+RUN chmod 755 /bin/env_parse /bin/set_local_dev_hostname
 
 #Create Data Directory
 ENTRYPOINT ["/bin/ship"]
@@ -55,4 +53,4 @@ RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
 
 # LABEL must be last for proper base image discoverability
-LABEL repository.socrata/base-focal=""
+LABEL repository.socrata/base-focal:ecs=""
