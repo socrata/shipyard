@@ -1,4 +1,4 @@
-socrata/base-focal
+socrata/base-focal:ecs
 ============
 
 Like the base Ubuntu image that establises a base set of patterns and
@@ -17,7 +17,7 @@ This script lets a service owner build configuration files that are created at r
 
 ### Usage
 
-Any container built on top of the socrata/base-focal image will default to running the whatever script is dropped in `/etc/ship.d/run`. Alternatively, you can invoke any script dropped in /etc/ship.d/ or any executable in the container via the CMD argument:
+Any container built on top of the socrata/base-focal:ecs image will default to running the whatever script is dropped in `/etc/ship.d/run`. Alternatively, you can invoke any script dropped in /etc/ship.d/ or any executable in the container via the CMD argument:
 
 ```bash
     $ docker pull socrata/base-focal:ecs
