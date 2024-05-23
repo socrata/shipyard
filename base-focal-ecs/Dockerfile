@@ -42,7 +42,7 @@ ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/set_ark_host /
 ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/set_ark_hostname /bin/
 ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/set_local_dev_hostname /bin/
 # Credential management bits
-ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/clortho-get /etc/pre-init.d/clortho-get
+ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/clortho-ecs-safe /etc/pre-init.d/clortho-get
 # Disable core dumps for CIS benchmark
 ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/coredump.conf /etc/systemd/
 # Mark these as executable
