@@ -31,7 +31,7 @@ RUN set -ex \
         \
 	&& PREFIX=/usr/local /tmp/ruby-build/install.sh \
         \
-        && ruby-build $(ruby-build -l | grep "^${RUBY_MAJOR}\.") /usr/local/ \
+        && ruby-build $(ruby-build --definitions | grep "^${RUBY_MAJOR}\." | sort --version-sort | tail -n 1) /usr/local/ \
         && rm -r /tmp/ruby-build/ \
         \
         && if [ -n "$BUNDLER_VERSION" ] ; then \
