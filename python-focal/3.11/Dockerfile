@@ -13,5 +13,11 @@ RUN apt-get update && \
     apt-get update && \
     apt-get -y install python3.11 python3.11-venv python3.11-distutils python3.11-dev
 
+# Make python3.11 the default python and install pip
+RUN ln -s /usr/bin/python3.11 /usr/local/bin/python && \
+    ln -s /usr/bin/python3.11 /usr/local/bin/python3 && \
+    python -m ensurepip && \
+    python -m pip install -U pip
+
 # LABEL must be last for proper base image discoverability
 LABEL repository.socrata/python-focal:3.11=""
