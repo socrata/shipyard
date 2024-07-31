@@ -1,4 +1,4 @@
-socrata/python-focal
+socrata/python-focal:3.11
 =====================
 
 socrata/base-focal image with python 3.11 and pip installed.
