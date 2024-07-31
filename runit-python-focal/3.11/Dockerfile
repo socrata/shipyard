@@ -20,4 +20,4 @@ RUN ln -s /usr/bin/python3.11 /usr/local/bin/python && \
 COPY collectd.statsd.conf /etc/collectd/conf.d/statsd.conf
 
 # LABEL must be last for proper base image discoverability
-LABEL repository.socrata/runit-python-focal:3.10=""
+LABEL repository.socrata/runit-python-focal:3.11=""
