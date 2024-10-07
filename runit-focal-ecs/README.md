@@ -1,4 +1,4 @@
-socrata/runit-focal
+socrata/runit-focal:ecs
 ============
 
 Image based on phusion/baseimage-docker that establises a base set of patterns and tools for building other containers with support for multiple processes via runit.
