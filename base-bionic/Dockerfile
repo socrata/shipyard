@@ -30,6 +30,7 @@ RUN mkdir /etc/pre-init.d
 
 RUN gem2.5 install aws-sdk-s3 -v '>= 1.76.0'
 RUN gem2.5 install --no-document aws-sdk-resources --pre -v '>= 2.11.562'
+RUN gem2.5 install --no-document rexml -v '>= 3.3.3'
 
 COPY env_parse set_ark_host set_ark_hostname set_local_dev_hostname ship /bin/
 COPY ship.d /etc/ship.d/
