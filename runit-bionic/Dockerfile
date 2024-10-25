@@ -26,7 +26,6 @@ RUN apt-get -y install --no-install-recommends collectd-core && \
 
 RUN gem2.5 install aws-sdk-s3 -v '>= 1.76.0'
 RUN gem2.5 install --no-document aws-sdk-resources --pre -v '>= 2.11.562'
-RUN gem2.5 install --no-document rexml -v '>= 3.3.3'
 
 COPY env_parse set_ark_host set_ark_hostname /bin/
 COPY set_local_dev_hostname /etc/my_init.d/
