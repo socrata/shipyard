@@ -27,6 +27,13 @@ RUN apt-get -y install --no-install-recommends collectd-core && \
 
 RUN gem2.7 install aws-sdk-s3 -v '>= 1.76.0'
 RUN gem2.7 install --no-document aws-sdk-resources --pre -v '>= 2.11.562'
+# The default version of this gem has vulnerabilities we cannot allow in our images. Install a newer 
+# version and then manually remove the default version.
+RUN gem2.7 install --no-document rexml -v '>= 3.3.3'
+RUN rm /usr/lib/ruby/gems/2.7.0/specifications/default/rexml* && \
+    rm -r /usr/lib/ruby/2.7.0/rexml && \
+    rm -r /usr/lib/ruby/gems/2.7.0/gems/rexml-* && \
+    gem2.7 cleanup
 
 # Add shared files from shipyard repo, this is done to keep these files in sync across all images
 ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/env_parse /bin/
