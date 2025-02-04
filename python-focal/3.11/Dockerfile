@@ -17,7 +17,8 @@ RUN apt-get update && \
 RUN ln -s /usr/bin/python3.11 /usr/local/bin/python && \
     ln -s /usr/bin/python3.11 /usr/local/bin/python3 && \
     python -m ensurepip && \
-    python -m pip install -U pip
+    python -m pip install -U pip && \
+    pip install setuptools==70.0.0 # Install a newer version of setuptools to resolve aqua finding
 
 # LABEL must be last for proper base image discoverability
 LABEL repository.socrata/python-focal:3.11=""
