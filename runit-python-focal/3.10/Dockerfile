@@ -14,7 +14,8 @@ RUN apt-get update && \
 RUN ln -s /usr/bin/python3.10 /usr/local/bin/python && \
     ln -s /usr/bin/python3.10 /usr/local/bin/python3 && \
     python -m ensurepip && \
-    python -m pip install -U pip
+    python -m pip install -U pip && \
+    pip install setuptools==70.0.0 # Install a newer version of setuptools to resolve aqua finding
 
 # collectd configuration
 COPY collectd.statsd.conf /etc/collectd/conf.d/statsd.conf
