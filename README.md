@@ -10,7 +10,7 @@ Build all images in this project:
 
 Build a single image from this project, with support for specific versions:
 
-    $ bin/build name[/x.x]
+    $ BUILD_OPTS="--platform=linux/amd64" bin/build name[/x.x]
 
 ## Images
 
