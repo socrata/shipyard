@@ -26,10 +26,10 @@ function build_image() {
 
   if [ -n "$versions" ]; then
     for version in $versions; do
-      docker build $BUILD_OPTS -t ${NS}/$tag:$version $DIR/$subdir
+      docker buildx build $BUILD_OPTS -t ${NS}/$tag:$version $DIR/$subdir
     done
   else
-    docker build $BUILD_OPTS -t ${NS}/$tag $DIR/$subdir
+    docker buildx build $BUILD_OPTS -t ${NS}/$tag $DIR/$subdir
   fi
 }
 
