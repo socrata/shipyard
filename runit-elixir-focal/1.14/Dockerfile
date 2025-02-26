@@ -23,9 +23,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install wget libncurses-dev libssl
 RUN mkdir /build /opt/erlang /opt/elixir
 WORKDIR /build
 
-RUN wget https://github.com/erlang/otp/releases/download/OTP-25.3.2.13/otp_src_25.3.2.13.tar.gz
-RUN tar xzf otp_src_25.3.2.13.tar.gz
-RUN cd otp_src_25.3.2.13 && ./configure --prefix=/opt/erlang && make && make install
+RUN wget https://github.com/erlang/otp/releases/download/OTP-25.3.2.18/otp_src_25.3.2.18.tar.gz
+RUN tar xzf otp_src_25.3.2.18.tar.gz
+RUN cd otp_src_25.3.2.18 && ./configure --prefix=/opt/erlang && make && make install
 
 ENV PATH /opt/erlang/bin:$PATH
 
