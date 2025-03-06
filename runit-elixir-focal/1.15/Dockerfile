@@ -23,15 +23,15 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install wget libncurses-dev libssl
 RUN mkdir /build /opt/erlang /opt/elixir
 WORKDIR /build
 
-RUN wget https://github.com/erlang/otp/releases/download/OTP-25.3.2.18/otp_src_25.3.2.18.tar.gz
-RUN tar xzf otp_src_25.3.2.18.tar.gz
-RUN cd otp_src_25.3.2.18 && ./configure --prefix=/opt/erlang && make && make install
+RUN wget https://github.com/erlang/otp/releases/download/OTP-26.2.5.9/otp_src_26.2.5.9.tar.gz
+RUN tar xzf otp_src_26.2.5.9.tar.gz
+RUN cd otp_src_26.2.5.9 && ./configure --prefix=/opt/erlang && make && make install
 
 ENV PATH /opt/erlang/bin:$PATH
 
-RUN wget https://github.com/elixir-lang/elixir/archive/v1.14.0.tar.gz
-RUN tar xzf v1.14.0.tar.gz
-RUN cd elixir-1.14.0 && env PREFIX=/opt/elixir make install
+RUN wget https://github.com/elixir-lang/elixir/archive/v1.15.0.tar.gz
+RUN tar xzf v1.15.0.tar.gz
+RUN cd elixir-1.15.0 && env PREFIX=/opt/elixir make install
 
 FROM base
 
@@ -43,4 +43,4 @@ ENV PATH /opt/erlang/bin:/opt/elixir/bin:$PATH
 COPY collectd-socket.conf /etc/collectd/conf.d/socket.conf
 
 # LABEL must be last for proper base image discoverability
-LABEL repository.socrata/runit-elixir-focal:1.14=""
+LABEL repository.socrata/runit-elixir-focal:1.15=""
