@@ -22,3 +22,4 @@ docker run --rm -t -i -v `pwd`:/opt/my_app socrata/ruby-focal:<version> ruby my_
 - `socrata/ruby-focal:3.0.x`
 - `socrata/ruby-focal:3.1.x`
 - `socrata/ruby-focal:3.2.x`
+- `socrata/ruby-focal:3.4.x`
