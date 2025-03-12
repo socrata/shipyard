@@ -2,6 +2,8 @@ FROM socrata/runit-focal AS base
 
 # Set up environment
 ENV LANG C.UTF-8
+ENV ERLANG_OTP_VERSION 26.2.5.9
+ENV ELIXIR_VERSION 1.15.8
 
 # Install Java 8. If we start using this image for things other than
 # one app, we might want to revisit this.
@@ -23,15 +25,17 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install wget libncurses-dev libssl
 RUN mkdir /build /opt/erlang /opt/elixir
 WORKDIR /build
 
-RUN wget https://github.com/erlang/otp/releases/download/OTP-26.2.5.9/otp_src_26.2.5.9.tar.gz
-RUN tar xzf otp_src_26.2.5.9.tar.gz
-RUN cd otp_src_26.2.5.9 && ./configure --prefix=/opt/erlang && make && make install
+
+
+RUN wget -O otp-src.tar.gz https://github.com/erlang/otp/releases/download/OTP-$ERLANG_OTP_VERSION/otp_src_$ERLANG_OTP_VERSION.tar.gz
+RUN tar xzf otp-src.tar.gz
+RUN cd otp_* && ./configure --prefix=/opt/erlang && make && make install
 
 ENV PATH /opt/erlang/bin:$PATH
 
-RUN wget https://github.com/elixir-lang/elixir/archive/v1.15.0.tar.gz
-RUN tar xzf v1.15.0.tar.gz
-RUN cd elixir-1.15.0 && env PREFIX=/opt/elixir make install
+RUN wget -O elixir-src.tar.gz https://github.com/elixir-lang/elixir/archive/v$ELIXIR_VERSION.tar.gz
+RUN tar xzf elixir-src.tar.gz
+RUN cd elixir-* && env PREFIX=/opt/elixir make install
 
 FROM base
 
