@@ -28,8 +28,15 @@ RUN apt-get -y update && \
 
 RUN mkdir /etc/pre-init.d
 
-RUN gem2.5 install aws-sdk-s3 -v '>= 1.76.0'
-RUN gem2.5 install --no-document aws-sdk-resources --pre -v '>= 2.11.562'
+# Adding --minimal-deps to these to slim down this layer
+# Adding -f to aws-sdk-resources because it kept trying to pull a version of aws-sdk-core that was incompatible with ruby 2.5
+RUN gem2.5 install --minimal-deps --no-document aws-eventstream -v '1.3.2' && \
+    gem2.5 install --minimal-deps --no-document aws-partitions -v '1.1109.0' && \
+    gem2.5 install --minimal-deps --no-document aws-sigv4 -v '1.11.0' && \
+    gem2.5 install --minimal-deps --no-document aws-sdk-core -v '3.224.1' && \
+    gem2.5 install --minimal-deps --no-document aws-sdk-kms -v '1.101.0' && \
+    gem2.5 install --minimal-deps --no-document aws-sdk-s3 -v '1.188.0' && \
+    gem2.5 install -f --minimal-deps --no-document aws-sdk-resources -v '3.227.0'
 
 COPY env_parse set_ark_host set_ark_hostname set_local_dev_hostname ship /bin/
 COPY ship.d /etc/ship.d/
