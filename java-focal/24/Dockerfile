@@ -1,9 +1,11 @@
 FROM socrata/base-focal
+ENV SOCRATA_JAVA_VERSION 24.0.2
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
-  DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confnew" --force-yes -fuy install software-properties-common && \
-  DEBIAN_FRONTEND=noninteractive add-apt-repository -y ppa:openjdk-r/ppa && apt-get -y update && \
-  DEBIAN_FRONTEND=noninteractive apt-get -y install openjdk-24-jdk && update-java-alternatives -s java-1.24.0-openjdk-amd64
+ENV SDKMAN_DIR /opt/sdkman
+RUN curl -s "https://get.sdkman.io?ci=true&rcupdate=false" | bash && \
+    bash -c "source /opt/sdkman/bin/sdkman-init.sh && \
+             sdk install java ${SOCRATA_JAVA_VERSION}-open"
+ENV PATH "/opt/sdkman/candidates/java/current/bin:$PATH"
 
 # Regenerate certs to work around bug in ca-certificates-java that results in missing Java certs
 # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=775775
