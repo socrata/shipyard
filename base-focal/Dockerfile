@@ -32,7 +32,7 @@ RUN mkdir /etc/pre-init.d
 
 RUN gem2.7 install aws-sdk-s3 -v '>= 1.76.0'
 RUN gem2.7 install --no-document aws-sdk-resources --pre -v '>= 2.11.562'
-# The default version of this gem has vulnerabilities we cannot allow in our images. Install a newer 
+# The default version of this gem has vulnerabilities we cannot allow in our images. Install a newer
 # version and then manually remove the default version.
 RUN gem2.7 install --no-document rexml -v '>= 3.3.3'
 RUN rm /usr/lib/ruby/gems/2.7.0/specifications/default/rexml* && \
