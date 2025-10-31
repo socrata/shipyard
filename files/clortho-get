@@ -1,5 +1,10 @@
 #!/usr/bin/ruby
 
+if ENV["AWS_EXECUTION_ENV"] == "AWS_ECS_FARGATE" then
+  puts "Skipping clortho-get because we're in ECS"
+  exit 0
+end
+
 require 'rubygems'
 require 'aws-sdk-core'
 require 'aws-sdk-resources'

@@ -32,6 +32,13 @@ RUN mkdir /etc/pre-init.d
 
 RUN gem2.7 install aws-sdk-s3 -v '>= 1.76.0'
 RUN gem2.7 install --no-document aws-sdk-resources --pre -v '>= 2.11.562'
+# The default version of this gem has vulnerabilities we cannot allow in our images. Install a newer
+# version and then manually remove the default version.
+RUN gem2.7 install --no-document rexml -v '>= 3.3.3'
+RUN rm /usr/lib/ruby/gems/2.7.0/specifications/default/rexml* && \
+    rm -r /usr/lib/ruby/2.7.0/rexml && \
+    rm -r /usr/lib/ruby/gems/2.7.0/gems/rexml-* && \
+    gem2.7 cleanup
 
 COPY ship /bin/
 COPY ship.d /etc/ship.d/
@@ -42,7 +49,7 @@ ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/set_ark_host /
 ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/set_ark_hostname /bin/
 ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/set_local_dev_hostname /bin/
 # Credential management bits
-ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/clortho-ecs-safe /etc/pre-init.d/clortho-get
+ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/clortho-get /etc/pre-init.d/clortho-get
 # Disable core dumps for CIS benchmark
 ADD https://raw.githubusercontent.com/socrata/shipyard/main/files/coredump.conf /etc/systemd/
 # Mark these as executable
@@ -57,4 +64,4 @@ RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
 
 # LABEL must be last for proper base image discoverability
-LABEL repository.socrata/base-focal:ecs=""
+LABEL repository.socrata/base-focal=""
