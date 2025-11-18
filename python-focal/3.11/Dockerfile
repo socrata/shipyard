@@ -1,24 +1,55 @@
-FROM socrata/base-focal
+FROM socrata/base-focal as python_build
 
 ENV DEBIAN_FRONTEND noninteractive
+
+# Set desired python minor version here
+ENV SOCRATA_PYTHON_VERSION 3.11
+
+# Python build dependencies from https://devguide.python.org/contrib/workflows/install-dependencies/
+ENV PYTHON_BUILD_DEPS git \
+                      build-essential \
+                      inetutils-inetd \
+                      gdb \
+                      lcov \
+                      libbz2-dev \
+                      libffi-dev \
+                      libgdbm-dev \
+                      libgdbm-compat-dev \
+                      liblzma-dev \
+                      libmpdec-dev \
+                      libncurses5-dev \
+                      libreadline6-dev \
+                      libsqlite3-dev \
+                      libssl-dev \
+                      libzstd-dev \
+                      lzma \
+                      lzma-dev \
+                      pkg-config \
+                      tk-dev \
+                      uuid-dev \
+                      zlib1g-dev
+
+# Add build dependencies used by python-build
+RUN apt-get update && \
+    apt-get install -y $PYTHON_BUILD_DEPS
+
+# Build and install latest desired python minor version in /opt/python_build prefix to be copied over in the next stage
+RUN git clone https://github.com/pyenv/pyenv.git /opt/pyenv && \
+    /opt/pyenv/plugins/python-build/bin/python-build \
+        $(/opt/pyenv/plugins/python-build/bin/python-build --definitions | \
+            grep  "^${SOCRATA_PYTHON_VERSION}\." | \
+            sort -Vr | \
+            head -1) \
+        /opt/python_build/
+
+FROM socrata/base-focal
 
 # Add locale profiles and default to en_US.UTF-8
 RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
 
-# Add deadsnakes ppa and install 3.11
-RUN apt-get update && \
-    apt-get -y install software-properties-common && \
-    add-apt-repository ppa:deadsnakes/ppa && \
-    apt-get update && \
-    apt-get -y install python3.11 python3.11-venv python3.11-distutils python3.11-dev
-
-# Make python3.11 the default python and install pip
-RUN ln -s /usr/bin/python3.11 /usr/local/bin/python && \
-    ln -s /usr/bin/python3.11 /usr/local/bin/python3 && \
-    python -m ensurepip && \
-    python -m pip install -U pip && \
-    pip install setuptools==70.0.0 # Install a newer version of setuptools to resolve aqua finding
+COPY --from=python_build [ "/opt/python_build/", "/usr/local/" ]
+RUN ldconfig
 
 # LABEL must be last for proper base image discoverability
 LABEL repository.socrata/python-focal:3.11=""
