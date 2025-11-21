@@ -1,5 +1,5 @@
-FROM socrata/base-focal as python_build
-
+FROM ubuntu:20.04 as python_build
+# Using stock ubuntu:20.04 as the build image so that there are no other files cluttering up the prefix when copying to the base image
 ENV DEBIAN_FRONTEND noninteractive
 
 # Set desired python minor version here
@@ -8,6 +8,7 @@ ENV SOCRATA_PYTHON_VERSION 3.11
 # Python build dependencies from https://devguide.python.org/contrib/workflows/install-dependencies/
 ENV PYTHON_BUILD_DEPS git \
                       build-essential \
+                      curl \
                       inetutils-inetd \
                       gdb \
                       lcov \
@@ -40,7 +41,7 @@ RUN git clone https://github.com/pyenv/pyenv.git /opt/pyenv && \
             grep  "^${SOCRATA_PYTHON_VERSION}\." | \
             sort -Vr | \
             head -1) \
-        /opt/python_build/
+        /usr/local/
 
 FROM socrata/base-focal
 
@@ -48,7 +49,8 @@ FROM socrata/base-focal
 RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
 
-COPY --from=python_build [ "/opt/python_build/", "/usr/local/" ]
+# Building them to a different prefix and copying the whole prefix in led to issues with pip trying to use the python the old build prefix
+COPY --from=python_build [ "/usr/local", "/usr/local" ]
 RUN ldconfig
 
 # LABEL must be last for proper base image discoverability

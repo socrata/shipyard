@@ -1,4 +1,5 @@
-FROM socrata/runit-focal as python_build
+FROM ubuntu:20.04 as python_build
+# Using stock ubuntu:20.04 as the build image so that there are no other files cluttering up the prefix when copying to the base image
 LABEL maintainer="Socrata 'sysadmin@socrata.com'"
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -9,6 +10,7 @@ ENV SOCRATA_PYTHON_VERSION 3.11
 # Python build dependencies from https://devguide.python.org/contrib/workflows/install-dependencies/
 ENV PYTHON_BUILD_DEPS git \
                       build-essential \
+                      curl \
                       inetutils-inetd \
                       gdb \
                       lcov \
@@ -41,7 +43,7 @@ RUN git clone https://github.com/pyenv/pyenv.git /opt/pyenv && \
             grep  "^${SOCRATA_PYTHON_VERSION}\." | \
             sort -Vr | \
             head -1) \
-        /opt/python_build/
+        /usr/local/
 
 FROM socrata/runit-focal
 
@@ -49,7 +51,7 @@ FROM socrata/runit-focal
 RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
 
-COPY --from=python_build [ "/opt/python_build/", "/usr/local/" ]
+COPY --from=python_build [ "/usr/local", "/usr/local" ]
 RUN ldconfig
 
 # collectd configuration
