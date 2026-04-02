@@ -10,9 +10,7 @@ ENV LANG C.UTF-8
 # ca-certificates-java that results in missing Java certs
 # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=775775
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
-  DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confnew" --force-yes -fuy install software-properties-common && \
-  DEBIAN_FRONTEND=noninteractive add-apt-repository -y ppa:openjdk-r/ppa && apt-get -y update && \
-  DEBIAN_FRONTEND=noninteractive apt-get -y install openjdk-8-jdk && \
+  DEBIAN_FRONTEND=noninteractive apt-get -y install openjdk-25-jdk && \
   mkdir -p /opt && \
   update-ca-certificates -f
 
