@@ -3,22 +3,26 @@ FROM socrata/runit-jammy AS base
 # Set up environment
 ENV LANG C.UTF-8
 
-# Install Java 8. If we start using this image for things other than
+# Install Java. If we start using this image for things other than
 # one app, we might want to revisit this.
 #
 # The update-ca-certs call is to work around a bug in
 # ca-certificates-java that results in missing Java certs
 # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=775775
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
-  DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends openjdk-25-jdk-headless && \
-  mkdir -p /opt && \
-  update-ca-certificates -f
+
+# Temporarily commenting this out during the java 8->25 transition
+# RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
+#   DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends openjdk-25-jdk-headless && \
+#   update-ca-certificates -f
+
+RUN mkdir -p /opt
 
 FROM base AS build
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install wget libncurses-dev libssl-dev
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
+  DEBIAN_FRONTEND=noninteractive apt-get -y install wget libncurses-dev libssl-dev
 
-RUN mkdir /build /opt/erlang /opt/elixir
+RUN mkdir -p /build /opt/erlang /opt/elixir
 WORKDIR /build
 
 RUN wget https://github.com/erlang/otp/releases/download/OTP-27.3/otp_src_27.3.tar.gz
