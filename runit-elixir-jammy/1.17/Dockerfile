@@ -9,9 +9,11 @@ ENV LANG C.UTF-8
 # The update-ca-certs call is to work around a bug in
 # ca-certificates-java that results in missing Java certs
 # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=775775
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
-  DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends openjdk-25-jdk-headless && \
-  update-ca-certificates -f
+
+# Temporarily commenting this out during the java 8->25 transition
+# RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && \
+#   DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends openjdk-25-jdk-headless && \
+#   update-ca-certificates -f
 
 RUN mkdir -p /opt
 
