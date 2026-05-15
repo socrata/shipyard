@@ -1,5 +1,4 @@
 FROM ubuntu:jammy as build
-LABEL maintainer="Socrata 'sysadmin@socrata.com'"
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -45,7 +44,7 @@ RUN locale-gen en_US.UTF-8
 
 FROM scratch
 COPY --from=build / /
-
+LABEL maintainer="Socrata 'sysadmin@socrata.com'"
 ENV DEBIAN_FRONTEND noninteractive
 ENV LANG en_US.UTF-8
 
