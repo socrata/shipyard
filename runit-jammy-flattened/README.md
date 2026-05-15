@@ -1,4 +1,4 @@
-socrata/runit-jammy
+socrata/runit-jammy:flattened
 ============
 
 Image based on phusion/baseimage-docker that establises a base set of patterns and tools for building other containers with support for multiple processes via runit.
@@ -36,7 +36,7 @@ Anything placed in /etc/my_init.d will be run on startup in lexigraphical order 
 Assuming we build an image called awesome_sauce from a Dockerfile like this:
 
 ```Dockerfile
-    FROM socrata/runit-jammy
+    FROM socrata/runit-jammy:flattened
 
     RUN mkdir /etc/service/myservice
     COPY myservice-run /etc/service/myservice/run
