@@ -1,8 +1,8 @@
-socrata/base-jammy
+socrata/base-jammy:flattened
 ============
 
 Like the base Ubuntu image that establises a base set of patterns and
-tools for building other containers except using Ubuntu 20.04
+tools for building other containers except using Ubuntu 22.04
 
 ### Features
 
@@ -22,12 +22,12 @@ This script lets a service owner build configuration files that are created at r
 Any container built on top of the socrata/base-jammy image will default to running the whatever script is dropped in `/etc/ship.d/run`. Alternatively, you can invoke any script dropped in /etc/ship.d/ or any executable in the container via the CMD argument:
 
 ```bash
-    $ docker pull socrata/base-jammy
-    $ docker run --rm -t -i socrata/base-jammy [CMD]
+    $ docker pull socrata/base-jammy:flattened
+    $ docker run --rm -t -i socrata/base-jammy:flattened [CMD]
 
     # Examples:
-    $ docker run --rm -t -i socrata/base-jammy # runs /etc/ship.d/run in the container
-    $ docker run --rm -t -i socrata/base-jammy bash        # launch a bash shell (on PATH)
+    $ docker run --rm -t -i socrata/base-jammy:flattened # runs /etc/ship.d/run in the container
+    $ docker run --rm -t -i socrata/base-jammy:flattened bash        # launch a bash shell (on PATH)
 
     # From inside the container, launch the /etc/shipd.d/run
     docker-host$ ship [run]
@@ -38,7 +38,7 @@ Any container built on top of the socrata/base-jammy image will default to runni
 Assuming we build an image called awesome_sauce from a Dockerfile like this:
 
 ```Dockerfile
-    FROM socrata/base-jammy
+    FROM socrata/base-jammy:flattened
     ADD run /etc/ship.d/
     ADD migrate /etc/ship.d/
 ```

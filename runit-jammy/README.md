@@ -5,7 +5,7 @@ Image based on phusion/baseimage-docker that establises a base set of patterns a
 
 ### Features
 
-- Ubuntu 20.04 LTS. The base system.
+- Ubuntu 22.04 LTS. The base system.
 - A correct init process (my_init) with
   - proper process reaping
   - Docker Stop sends SIGTERM to the init process, which stops all processes gracefully on termination.
