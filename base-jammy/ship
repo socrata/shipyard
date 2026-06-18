@@ -27,7 +27,7 @@ if [ -d /etc/pre-init.d ]; then
 fi
 
 # Raise the ulimit - default of 1024 is stone age
-ulimit -n 10000
+ulimit -n ${ULIMIT_N:-10000}
 
 if [ -e /etc/ship.d/$COMMAND ]; then
   exec /etc/ship.d/$COMMAND $@
