@@ -15,3 +15,4 @@ Most uses of the image will be via `FROM socrata/python-jammy` in a Dockerfile, 
 Available tags:
 - `socrata/python-jammy:3.10`
 - `socrata/python-jammy:3.11`
+- `socrata/python-jammy:3.12`
